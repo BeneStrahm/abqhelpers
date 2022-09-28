@@ -27,9 +27,9 @@ import os
 # ------------------------------------------------------------------------------
 
 
-def import_3_d_parts(model, path, bodyNum=1, combine=True, mergeSolidRegions=True):
-    acis = mdb.openAcis(path, scaleFromFile=OFF)
-    partName = os.path.split(path)[1].split('.')[-2]
+def import_3_d_parts(model, pathToFile, bodyNum=1, combine=True, mergeSolidRegions=True):
+    acis = mdb.openAcis(pathToFile, scaleFromFile=OFF)
+    partName = os.path.split(pathToFile)[1].split('.')[-2]
     for i in range(bodyNum):
         model.PartFromGeometryFile(name=partName + '-' + str(i), geometryFile=acis, combine=combine,
                                    mergeSolidRegions=mergeSolidRegions, dimensionality=THREE_D, type=DEFORMABLE_BODY)
