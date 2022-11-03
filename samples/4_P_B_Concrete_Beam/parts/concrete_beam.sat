@@ -1,5 +1,5 @@
 400 0 2 0        
-7 Unknown 13 ACIS 5.0.1 NT 24 Fri Sep 23 14:54:15 2022
+7 Unknown 13 ACIS 5.0.1 NT 24 Tue Oct  4 15:55:29 2022
 1 9.9999999999999995e-007 1e-010 
 -0 body $-1 $3 $-1 $2 #                                                                                            
 -1 body $-1 $112 $-1 $111 #                                                                                        
@@ -10,10 +10,10 @@
 -6 spline-surface $-1 forward { exactsur nubs 1 1 open open none none 2 2
         0 1 60 1 
         0 1 10 1 
-        0 0 0 
-        60 0 0 
-        0 0 10 
+        120 0 10 
         60 0 10 
+        120 0 0 
+        60 0 0 
         0
         0
         0
@@ -59,10 +59,10 @@
 -17 spline-surface $-1 forward { exactsur nubs 1 1 open open none none 2 2
         0 1 10 1 
         0 1 10 1 
-        60 0 0 
-        60 10 0 
         60 0 10 
         60 10 10 
+        60 0 0 
+        60 10 0 
         0
         0
         0
@@ -108,10 +108,10 @@
 -28 spline-surface $-1 forward { exactsur nubs 1 1 open open none none 2 2
         0 1 60 1 
         0 1 10 1 
-        60 10 0 
-        0 10 0 
         60 10 10 
-        0 10 10 
+        120 10 10 
+        60 10 0 
+        120 10 0 
         0
         0
         0
@@ -157,10 +157,10 @@
 -39 spline-surface $-1 forward { exactsur nubs 1 1 open open none none 2 2
         0 1 10 1 
         0 1 10 1 
-        0 10 0 
-        0 0 0 
-        0 10 10 
-        0 0 10 
+        120 10 10 
+        120 0 10 
+        120 10 0 
+        120 0 0 
         0
         0
         0
@@ -206,10 +206,10 @@
 -50 spline-surface $-1 forward { exactsur nubs 1 1 open open none none 2 2
         0 1 10 1 
         0 1 60 1 
-        0 0 0 
-        0 10 0 
-        60 0 0 
-        60 10 0 
+        120 0 10 
+        120 10 10 
+        60 0 10 
+        60 10 10 
         0
         0
         0
@@ -255,10 +255,10 @@
 -61 spline-surface $-1 forward { exactsur nubs 1 1 open open none none 2 2
         0 1 60 1 
         0 1 10 1 
-        0 0 10 
-        60 0 10 
-        0 10 10 
-        60 10 10 
+        120 0 0 
+        60 0 0 
+        120 10 0 
+        60 10 0 
         0
         0
         0
@@ -303,8 +303,8 @@
 -71 edge $-1 $95 $97 $8 $72 forward #
 -72 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 60 1 
-        0 0 0 
-        60 0 0 
+        120 0 10 
+        60 0 10 
         0
         null_surface
         null_surface
@@ -318,8 +318,8 @@
 -73 edge $-1 $97 $99 $19 $74 forward #
 -74 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 10 1 
-        60 0 0 
-        60 10 0 
+        60 0 10 
+        60 10 10 
         0
         null_surface
         null_surface
@@ -333,8 +333,8 @@
 -75 edge $-1 $99 $101 $30 $76 forward #
 -76 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 60 1 
-        60 10 0 
-        0 10 0 
+        60 10 10 
+        120 10 10 
         0
         null_surface
         null_surface
@@ -348,8 +348,8 @@
 -77 edge $-1 $101 $95 $41 $78 forward #
 -78 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 10 1 
-        0 10 0 
-        0 0 0 
+        120 10 10 
+        120 0 10 
         0
         null_surface
         null_surface
@@ -363,8 +363,8 @@
 -79 edge $-1 $103 $105 $12 $80 forward #
 -80 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 60 1 
-        0 0 10 
-        60 0 10 
+        120 0 0 
+        60 0 0 
         0
         null_surface
         null_surface
@@ -378,8 +378,8 @@
 -81 edge $-1 $105 $107 $23 $82 forward #
 -82 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 10 1 
-        60 0 10 
-        60 10 10 
+        60 0 0 
+        60 10 0 
         0
         null_surface
         null_surface
@@ -393,8 +393,8 @@
 -83 edge $-1 $107 $109 $34 $84 forward #
 -84 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 60 1 
-        60 10 10 
-        0 10 10 
+        60 10 0 
+        120 10 0 
         0
         null_surface
         null_surface
@@ -408,8 +408,8 @@
 -85 edge $-1 $109 $103 $45 $86 forward #
 -86 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 10 1 
-        0 10 10 
-        0 0 10 
+        120 10 0 
+        120 0 0 
         0
         null_surface
         null_surface
@@ -423,8 +423,8 @@
 -87 edge $-1 $95 $103 $14 $88 forward #
 -88 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 10 1 
-        0 0 0 
-        0 0 10 
+        120 0 10 
+        120 0 0 
         0
         null_surface
         null_surface
@@ -438,8 +438,8 @@
 -89 edge $-1 $97 $105 $10 $90 forward #
 -90 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 10 1 
-        60 0 0 
         60 0 10 
+        60 0 0 
         0
         null_surface
         null_surface
@@ -453,8 +453,8 @@
 -91 edge $-1 $99 $107 $21 $92 forward #
 -92 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 10 1 
-        60 10 0 
         60 10 10 
+        60 10 0 
         0
         null_surface
         null_surface
@@ -468,8 +468,8 @@
 -93 edge $-1 $101 $109 $32 $94 forward #
 -94 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 10 1 
-        0 10 0 
-        0 10 10 
+        120 10 10 
+        120 10 0 
         0
         null_surface
         null_surface
@@ -481,21 +481,21 @@
         0
         F 0 F 10 } F 0 F 10 #
 -95 vertex $-1 $71 $96 #
--96 point $-1 0 0 0 #
+-96 point $-1 120 0 10 #
 -97 vertex $-1 $71 $98 #
--98 point $-1 60 0 0 #
+-98 point $-1 60 0 10 #
 -99 vertex $-1 $73 $100 #
--100 point $-1 60 10 0 #
+-100 point $-1 60 10 10 #
 -101 vertex $-1 $75 $102 #
--102 point $-1 0 10 0 #
+-102 point $-1 120 10 10 #
 -103 vertex $-1 $79 $104 #
--104 point $-1 0 0 10 #
+-104 point $-1 120 0 0 #
 -105 vertex $-1 $79 $106 #
--106 point $-1 60 0 10 #
+-106 point $-1 60 0 0 #
 -107 vertex $-1 $81 $108 #
--108 point $-1 60 10 10 #
+-108 point $-1 60 10 0 #
 -109 vertex $-1 $83 $110 #
--110 point $-1 0 10 10 #
+-110 point $-1 120 10 0 #
 -111 transform $-1 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 #
 -112 lump $-1 $-1 $113 $1 #
 -113 shell $-1 $-1 $-1 $114 $-1 $112 #
@@ -503,10 +503,10 @@
 -115 spline-surface $-1 forward { exactsur nubs 1 1 open open none none 2 2
         0 1 60 1 
         0 1 10 1 
-        120 0 10 
-        60 0 10 
-        120 0 0 
+        0 0 0 
         60 0 0 
+        0 0 10 
+        60 0 10 
         0
         0
         0
@@ -552,10 +552,10 @@
 -126 spline-surface $-1 forward { exactsur nubs 1 1 open open none none 2 2
         0 1 10 1 
         0 1 10 1 
-        60 0 10 
-        60 10 10 
         60 0 0 
         60 10 0 
+        60 0 10 
+        60 10 10 
         0
         0
         0
@@ -601,10 +601,10 @@
 -137 spline-surface $-1 forward { exactsur nubs 1 1 open open none none 2 2
         0 1 60 1 
         0 1 10 1 
-        60 10 10 
-        120 10 10 
         60 10 0 
-        120 10 0 
+        0 10 0 
+        60 10 10 
+        0 10 10 
         0
         0
         0
@@ -650,10 +650,10 @@
 -148 spline-surface $-1 forward { exactsur nubs 1 1 open open none none 2 2
         0 1 10 1 
         0 1 10 1 
-        120 10 10 
-        120 0 10 
-        120 10 0 
-        120 0 0 
+        0 10 0 
+        0 0 0 
+        0 10 10 
+        0 0 10 
         0
         0
         0
@@ -699,10 +699,10 @@
 -159 spline-surface $-1 forward { exactsur nubs 1 1 open open none none 2 2
         0 1 10 1 
         0 1 60 1 
-        120 0 10 
-        120 10 10 
-        60 0 10 
-        60 10 10 
+        0 0 0 
+        0 10 0 
+        60 0 0 
+        60 10 0 
         0
         0
         0
@@ -748,10 +748,10 @@
 -170 spline-surface $-1 forward { exactsur nubs 1 1 open open none none 2 2
         0 1 60 1 
         0 1 10 1 
-        120 0 0 
-        60 0 0 
-        120 10 0 
-        60 10 0 
+        0 0 10 
+        60 0 10 
+        0 10 10 
+        60 10 10 
         0
         0
         0
@@ -796,8 +796,8 @@
 -180 edge $-1 $204 $206 $117 $181 forward #
 -181 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 60 1 
-        120 0 10 
-        60 0 10 
+        0 0 0 
+        60 0 0 
         0
         null_surface
         null_surface
@@ -811,8 +811,8 @@
 -182 edge $-1 $206 $208 $128 $183 forward #
 -183 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 10 1 
-        60 0 10 
-        60 10 10 
+        60 0 0 
+        60 10 0 
         0
         null_surface
         null_surface
@@ -826,8 +826,8 @@
 -184 edge $-1 $208 $210 $139 $185 forward #
 -185 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 60 1 
-        60 10 10 
-        120 10 10 
+        60 10 0 
+        0 10 0 
         0
         null_surface
         null_surface
@@ -841,8 +841,8 @@
 -186 edge $-1 $210 $204 $150 $187 forward #
 -187 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 10 1 
-        120 10 10 
-        120 0 10 
+        0 10 0 
+        0 0 0 
         0
         null_surface
         null_surface
@@ -856,8 +856,8 @@
 -188 edge $-1 $212 $214 $121 $189 forward #
 -189 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 60 1 
-        120 0 0 
-        60 0 0 
+        0 0 10 
+        60 0 10 
         0
         null_surface
         null_surface
@@ -871,8 +871,8 @@
 -190 edge $-1 $214 $216 $132 $191 forward #
 -191 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 10 1 
-        60 0 0 
-        60 10 0 
+        60 0 10 
+        60 10 10 
         0
         null_surface
         null_surface
@@ -886,8 +886,8 @@
 -192 edge $-1 $216 $218 $143 $193 forward #
 -193 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 60 1 
-        60 10 0 
-        120 10 0 
+        60 10 10 
+        0 10 10 
         0
         null_surface
         null_surface
@@ -901,8 +901,8 @@
 -194 edge $-1 $218 $212 $154 $195 forward #
 -195 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 10 1 
-        120 10 0 
-        120 0 0 
+        0 10 10 
+        0 0 10 
         0
         null_surface
         null_surface
@@ -916,8 +916,8 @@
 -196 edge $-1 $204 $212 $123 $197 forward #
 -197 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 10 1 
-        120 0 10 
-        120 0 0 
+        0 0 0 
+        0 0 10 
         0
         null_surface
         null_surface
@@ -931,8 +931,8 @@
 -198 edge $-1 $206 $214 $119 $199 forward #
 -199 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 10 1 
-        60 0 10 
         60 0 0 
+        60 0 10 
         0
         null_surface
         null_surface
@@ -946,8 +946,8 @@
 -200 edge $-1 $208 $216 $130 $201 forward #
 -201 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 10 1 
-        60 10 10 
         60 10 0 
+        60 10 10 
         0
         null_surface
         null_surface
@@ -961,8 +961,8 @@
 -202 edge $-1 $210 $218 $141 $203 forward #
 -203 intcurve-curve $-1 forward { exactcur nubs 1 open 2
         0 1 10 1 
-        120 10 10 
-        120 10 0 
+        0 10 0 
+        0 10 10 
         0
         null_surface
         null_surface
@@ -974,19 +974,19 @@
         0
         F 0 F 10 } F 0 F 10 #
 -204 vertex $-1 $180 $205 #
--205 point $-1 120 0 10 #
+-205 point $-1 0 0 0 #
 -206 vertex $-1 $180 $207 #
--207 point $-1 60 0 10 #
+-207 point $-1 60 0 0 #
 -208 vertex $-1 $182 $209 #
--209 point $-1 60 10 10 #
+-209 point $-1 60 10 0 #
 -210 vertex $-1 $184 $211 #
--211 point $-1 120 10 10 #
+-211 point $-1 0 10 0 #
 -212 vertex $-1 $188 $213 #
--213 point $-1 120 0 0 #
+-213 point $-1 0 0 10 #
 -214 vertex $-1 $188 $215 #
--215 point $-1 60 0 0 #
+-215 point $-1 60 0 10 #
 -216 vertex $-1 $190 $217 #
--217 point $-1 60 10 0 #
+-217 point $-1 60 10 10 #
 -218 vertex $-1 $192 $219 #
--219 point $-1 120 10 0 #
+-219 point $-1 0 10 10 #
 End-of-ACIS-data

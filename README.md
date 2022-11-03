@@ -1,5 +1,22 @@
 # abqhelpers
 
+## Import abqhelpers
+
+Abaqus doesn't easily suppport importing custom libraries. A workaround is to use 'imp' to import modules in each of the scripts. Changes the abq_path variable to wherever this folder is located and import using imp:
+
+    # import custom libraries
+    import imp
+
+    # path to abqhelpers
+    abq_path = "C:/Users/ac135564/GitHub/abqhelpers/"
+
+    filemanager = imp.load_source('helpers.filemanager', os.path.join(
+        abq_path, 'helpers/filemanager.py'))
+
+In order to use the imported module use the object's methods:
+
+    filemanager.scanFolder('C:/')
+
 ## License
 
 Shield: [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
