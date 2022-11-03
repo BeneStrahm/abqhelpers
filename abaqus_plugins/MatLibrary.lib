@@ -1,0 +1,217 @@
+((I8
+I7
+S'steel s460'
+p0
+I1
+(dp1
+S'Data Source'
+p2
+S'Imported from CAE'
+p3
+sS'Description'
+p4
+g3
+sS'Time Stamp'
+p5
+F1666876919.646
+sS'visible'
+p6
+(lp7
+g2
+ag4
+aS'Units'
+p8
+aS'Vendor material name'
+p9
+asS'version'
+p10
+S'2021'
+p11
+sg9
+g0
+sg8
+g3
+sS'Data'
+p12
+S"{'name': 'steel s460', 'elastic': {'temperatureDependency': OFF, 'moduli': LONG_TERM, 'noCompression': OFF, 'noTension': OFF, 'dependencies': 0, 'table': ((210000.0, 0.3),), 'type': ISOTROPIC}, 'density': {'temperatureDependency': OFF, 'table': ((7.85e-09,),), 'dependencies': 0, 'fieldName': '', 'distributionType': UNIFORM}, 'plastic': {'temperatureDependency': OFF, 'scaleStress': None, 'rate': OFF, 'dependencies': 0, 'hardening': ISOTROPIC, 'staticRecovery': OFF, 'dataType': HALF_CYCLE, 'table': ((414.8, 0.0), (462.8, 0.004), (466.9, 0.0099), (595.4, 0.0948)), 'strainRangeDependency': OFF, 'numBackstresses': 1}, 'materialIdentifier': '', 'description': 'Source: DNV-RP-C208 (Table 4-6)'}"
+p13
+stp14
+(I9
+I4
+S'concrete_cdp_c50_60'
+p15
+I1
+(dp16
+S'Data Source'
+p17
+S'Imported from CAE'
+p18
+sS'Description'
+p19
+g18
+sS'Time Stamp'
+p20
+F1666876958.926
+sS'visible'
+p21
+(lp22
+g17
+ag19
+aS'Units'
+p23
+aS'Vendor material name'
+p24
+asS'version'
+p25
+S'2021'
+p26
+sg24
+S'concrete_cdp_C50_60'
+p27
+sg23
+g18
+sS'Data'
+p28
+S"{'name': 'concrete_cdp_C50_60', 'elastic': {'temperatureDependency': OFF, 'moduli': LONG_TERM, 'noCompression': OFF, 'noTension': OFF, 'dependencies': 0, 'table': ((37000.0, 0.2),), 'type': ISOTROPIC}, 'density': {'temperatureDependency': OFF, 'table': ((2.3e-09,),), 'dependencies': 0, 'fieldName': '', 'distributionType': UNIFORM}, 'concreteDamagedPlasticity': {'temperatureDependency': OFF, 'table': ((36.0, 0.1, 1.16, 0.667, 0.001),), 'dependencies': 0, 'concreteCompressionHardening': {'temperatureDependency': OFF, 'table': ((18.56, 0.0), (46.4, 0.00089), (46.4, 0.0035), (4.64, 0.004)), 'rate': OFF, 'dependencies': 0}, 'concreteTensionStiffening': {'temperatureDependency': OFF, 'table': ((3.16, 0.0), (0.316, 0.0162), (0.0316, 0.0695)), 'rate': OFF, 'dependencies': 0, 'type': DISPLACEMENT}}, 'materialIdentifier': '', 'description': ''}"
+p29
+stp30
+(I0
+I-1
+S'MatLibrary.lib'
+p31
+I0
+(dp32
+tp33
+(I1
+I7
+S'steel s235'
+p34
+I1
+(dp35
+g2
+g3
+sg4
+g3
+sg5
+F1666876918.486
+sg6
+(lp36
+g2
+ag4
+ag8
+ag9
+asg10
+S'2021'
+p37
+sg9
+g34
+sg8
+g3
+sg12
+S"{'name': 'steel s235', 'elastic': {'temperatureDependency': OFF, 'moduli': LONG_TERM, 'noCompression': OFF, 'noTension': OFF, 'dependencies': 0, 'table': ((210000.0, 0.3),), 'type': ISOTROPIC}, 'density': {'temperatureDependency': OFF, 'table': ((7.85e-09,),), 'dependencies': 0, 'fieldName': '', 'distributionType': UNIFORM}, 'plastic': {'temperatureDependency': OFF, 'scaleStress': None, 'rate': OFF, 'dependencies': 0, 'hardening': ISOTROPIC, 'staticRecovery': OFF, 'dataType': HALF_CYCLE, 'table': ((211.7, 0.0), (236.2, 0.004), (243.4, 0.0198), (432.6, 0.1817)), 'strainRangeDependency': OFF, 'numBackstresses': 1}, 'materialIdentifier': '', 'description': 'Source: DNV-RP-C208 (Table 4-6)\\n'}"
+p38
+stp39
+(I2
+I5
+S'support_stiff'
+p40
+I1
+(dp41
+S'Data Source'
+p42
+S'Imported from CAE'
+p43
+sS'Description'
+p44
+g43
+sS'CAE name'
+p45
+S'support_stiff'
+p46
+sS'Time Stamp'
+p47
+F1666874023.801
+sS'visible'
+p48
+(lp49
+g42
+ag44
+aS'Units'
+p50
+aS'Vendor material name'
+p51
+asS'version'
+p52
+S'2021'
+p53
+sg51
+g40
+sg50
+g43
+sS'Data'
+p54
+S"{'materialIdentifier': '', 'description': '', 'elastic': {'temperatureDependency': OFF, 'moduli': LONG_TERM, 'noCompression': OFF, 'noTension': OFF, 'dependencies': 0, 'table': ((99999999999.0, 0.3),), 'type': ISOTROPIC}, 'name': 'support_stiff'}"
+p55
+stp56
+(I3
+I6
+S'reinforcement b500'
+p57
+I1
+(dp58
+g42
+g43
+sg44
+g43
+sg45
+S'reinforcement b500'
+p59
+sg47
+F1666874025.473
+sg48
+(lp60
+g42
+ag44
+ag50
+ag51
+asg52
+S'2021'
+p61
+sg51
+g57
+sg50
+g43
+sg54
+S"{'name': 'reinforcement b500', 'elastic': {'temperatureDependency': OFF, 'moduli': LONG_TERM, 'noCompression': OFF, 'noTension': OFF, 'dependencies': 0, 'table': ((200000.0, 0.3),), 'type': ISOTROPIC}, 'density': {'temperatureDependency': OFF, 'table': ((7.85e-09,),), 'dependencies': 0, 'fieldName': '', 'distributionType': UNIFORM}, 'plastic': {'temperatureDependency': OFF, 'scaleStress': None, 'rate': OFF, 'dependencies': 0, 'hardening': ISOTROPIC, 'staticRecovery': OFF, 'dataType': HALF_CYCLE, 'table': ((500.0, 0.0), (525.0, 0.0225), (525.0, 0.05)), 'strainRangeDependency': OFF, 'numBackstresses': 1}, 'materialIdentifier': '', 'description': ''}"
+p62
+stp63
+(I4
+I0
+S'Concrete'
+p64
+I0
+(dp65
+tp66
+(I5
+I0
+S'Dummy'
+p67
+I0
+(dp68
+tp69
+(I6
+I0
+S'Reinforcement'
+p70
+I0
+(dp71
+tp72
+(I7
+I0
+S'Steel'
+p73
+I0
+(dp74
+tp75
+tp76
+.
