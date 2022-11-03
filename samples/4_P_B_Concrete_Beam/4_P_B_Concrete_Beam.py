@@ -24,6 +24,7 @@ import imp
 
 # path to abqhelpers
 abq_path = "C:/Users/ac135564/GitHub/abqhelpers/"
+abq_mat_lib = os.path.join(abq_path, "abaqus_plugins/MatLibrary.lib")
 
 try:
     # in Python: add via relative import for type hints
@@ -40,6 +41,14 @@ except:
     # in Abaqus: add via imp for correct import
     abq_parts = imp.load_source(
         'sec.abq_parts', os.path.join(abq_path, 'src/abq_parts.py'))
+
+try:
+    # in Python: add via relative import for type hints
+    from abqhelpers.src import abq_property
+except:
+    # in Abaqus: add via imp for correct import
+    abq_property = imp.load_source(
+        'sec.abq_property', os.path.join(abq_path, 'src/abq_property.py'))
 
 try:
     # in Python: add via relative import for type hints

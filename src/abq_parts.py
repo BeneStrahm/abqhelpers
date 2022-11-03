@@ -63,6 +63,12 @@ def create_Set_All_Cells(model, part, set_name):
     p.Set(cells=c, name=set_name)
 
 
+def create_Set_All_Edges(model, part, set_name):
+    p = model.parts[part]
+    e = p.edges[:]
+    p.Set(edges=e, name=set_name)
+
+
 def create_Set_Face(model, part, set_name, x, y, z):
     face = ()
     p = model.parts[part]
