@@ -1,6 +1,6 @@
 ((I8
 I7
-S'steel s460'
+S'steel_s460'
 p0
 I1
 (dp1
@@ -33,7 +33,7 @@ sg8
 g3
 sS'Data'
 p12
-S"{'name': 'steel s460', 'elastic': {'temperatureDependency': OFF, 'moduli': LONG_TERM, 'noCompression': OFF, 'noTension': OFF, 'dependencies': 0, 'table': ((210000.0, 0.3),), 'type': ISOTROPIC}, 'density': {'temperatureDependency': OFF, 'table': ((7.85e-09,),), 'dependencies': 0, 'fieldName': '', 'distributionType': UNIFORM}, 'plastic': {'temperatureDependency': OFF, 'scaleStress': None, 'rate': OFF, 'dependencies': 0, 'hardening': ISOTROPIC, 'staticRecovery': OFF, 'dataType': HALF_CYCLE, 'table': ((414.8, 0.0), (462.8, 0.004), (466.9, 0.0099), (595.4, 0.0948)), 'strainRangeDependency': OFF, 'numBackstresses': 1}, 'materialIdentifier': '', 'description': 'Source: DNV-RP-C208 (Table 4-6)'}"
+S"{'name': 'steel_s460', 'elastic': {'temperatureDependency': OFF, 'moduli': LONG_TERM, 'noCompression': OFF, 'noTension': OFF, 'dependencies': 0, 'table': ((210000.0, 0.3),), 'type': ISOTROPIC}, 'density': {'temperatureDependency': OFF, 'table': ((7.85e-09,),), 'dependencies': 0, 'fieldName': '', 'distributionType': UNIFORM}, 'plastic': {'temperatureDependency': OFF, 'scaleStress': None, 'rate': OFF, 'dependencies': 0, 'hardening': ISOTROPIC, 'staticRecovery': OFF, 'dataType': HALF_CYCLE, 'table': ((414.8, 0.0), (462.8, 0.004), (466.9, 0.0099), (595.4, 0.0948)), 'strainRangeDependency': OFF, 'numBackstresses': 1}, 'materialIdentifier': '', 'description': 'Source: DNV-RP-C208 (Table 4-6)'}"
 p13
 stp14
 (I9
@@ -84,7 +84,7 @@ I0
 tp33
 (I1
 I7
-S'steel s235'
+S'steel_s235'
 p34
 I1
 (dp35
@@ -108,7 +108,7 @@ g34
 sg8
 g3
 sg12
-S"{'name': 'steel s235', 'elastic': {'temperatureDependency': OFF, 'moduli': LONG_TERM, 'noCompression': OFF, 'noTension': OFF, 'dependencies': 0, 'table': ((210000.0, 0.3),), 'type': ISOTROPIC}, 'density': {'temperatureDependency': OFF, 'table': ((7.85e-09,),), 'dependencies': 0, 'fieldName': '', 'distributionType': UNIFORM}, 'plastic': {'temperatureDependency': OFF, 'scaleStress': None, 'rate': OFF, 'dependencies': 0, 'hardening': ISOTROPIC, 'staticRecovery': OFF, 'dataType': HALF_CYCLE, 'table': ((211.7, 0.0), (236.2, 0.004), (243.4, 0.0198), (432.6, 0.1817)), 'strainRangeDependency': OFF, 'numBackstresses': 1}, 'materialIdentifier': '', 'description': 'Source: DNV-RP-C208 (Table 4-6)\\n'}"
+S"{'name': 'steel_s235', 'elastic': {'temperatureDependency': OFF, 'moduli': LONG_TERM, 'noCompression': OFF, 'noTension': OFF, 'dependencies': 0, 'table': ((210000.0, 0.3),), 'type': ISOTROPIC}, 'density': {'temperatureDependency': OFF, 'table': ((7.85e-09,),), 'dependencies': 0, 'fieldName': '', 'distributionType': UNIFORM}, 'plastic': {'temperatureDependency': OFF, 'scaleStress': None, 'rate': OFF, 'dependencies': 0, 'hardening': ISOTROPIC, 'staticRecovery': OFF, 'dataType': HALF_CYCLE, 'table': ((211.7, 0.0), (236.2, 0.004), (243.4, 0.0198), (432.6, 0.1817)), 'strainRangeDependency': OFF, 'numBackstresses': 1}, 'materialIdentifier': '', 'description': 'Source: DNV-RP-C208 (Table 4-6)\\n'}"
 p38
 stp39
 (I2
@@ -155,7 +155,7 @@ p55
 stp56
 (I3
 I6
-S'reinforcement b500'
+S'reinforcement_b500'
 p57
 I1
 (dp58
@@ -164,7 +164,7 @@ g43
 sg44
 g43
 sg45
-S'reinforcement b500'
+S'reinforcement_b500'
 p59
 sg47
 F1666874025.473
@@ -182,7 +182,7 @@ g57
 sg50
 g43
 sg54
-S"{'name': 'reinforcement b500', 'elastic': {'temperatureDependency': OFF, 'moduli': LONG_TERM, 'noCompression': OFF, 'noTension': OFF, 'dependencies': 0, 'table': ((200000.0, 0.3),), 'type': ISOTROPIC}, 'density': {'temperatureDependency': OFF, 'table': ((7.85e-09,),), 'dependencies': 0, 'fieldName': '', 'distributionType': UNIFORM}, 'plastic': {'temperatureDependency': OFF, 'scaleStress': None, 'rate': OFF, 'dependencies': 0, 'hardening': ISOTROPIC, 'staticRecovery': OFF, 'dataType': HALF_CYCLE, 'table': ((500.0, 0.0), (525.0, 0.0225), (525.0, 0.05)), 'strainRangeDependency': OFF, 'numBackstresses': 1}, 'materialIdentifier': '', 'description': ''}"
+S"{'name': 'reinforcement_b500', 'elastic': {'temperatureDependency': OFF, 'moduli': LONG_TERM, 'noCompression': OFF, 'noTension': OFF, 'dependencies': 0, 'table': ((200000.0, 0.3),), 'type': ISOTROPIC}, 'density': {'temperatureDependency': OFF, 'table': ((7.85e-09,),), 'dependencies': 0, 'fieldName': '', 'distributionType': UNIFORM}, 'plastic': {'temperatureDependency': OFF, 'scaleStress': None, 'rate': OFF, 'dependencies': 0, 'hardening': ISOTROPIC, 'staticRecovery': OFF, 'dataType': HALF_CYCLE, 'table': ((500.0, 0.0), (525.0, 0.0225), (525.0, 0.05)), 'strainRangeDependency': OFF, 'numBackstresses': 1}, 'materialIdentifier': '', 'description': ''}"
 p62
 stp63
 (I4
