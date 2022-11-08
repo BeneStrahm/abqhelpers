@@ -42,6 +42,24 @@ def import_3_d_parts(model, pathToFile, bodyNum=1, combine=True, mergeSolidRegio
     return part_list
 
 
+def create_datum_plane_by_point_and_normal(model, part, point, normal):
+    if not normal[0] == 0:
+        principalPlane = YZPLANE
+        offset = point[0]
+    elif not normal[1] == 0:
+        principalPlane = XZPLANE
+        offset = point[1]
+    elif not normal[2] == 0:
+        principalPlane = XYPLANE
+        offset = point[2]
+        
+    p = model.parts[part]
+    plane = p.DatumPlaneByPrincipalPlane(
+        principalPlane=principalPlane, offset=offset)
+    myID = plane.id
+    return myID
+
+
 def create_datum_plane_by_principal(model, part, principalPlane, offset):
     p = model.parts[part]
     plane = p.DatumPlaneByPrincipalPlane(
