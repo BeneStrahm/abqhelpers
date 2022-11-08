@@ -31,7 +31,7 @@ import numpy as np
 
 def import_from_material_library(libPath, modelName, matName):
     # load material library
-    mat_lib_file = open(libPath, "rb")
+    mat_lib_file = open(libPath, "r")
     mat_lib = pickle.load(mat_lib_file)
 
     # find matName in library
