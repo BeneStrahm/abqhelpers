@@ -2,7 +2,7 @@
 Reinforced concrete beam under 4-point bending in ABAQUS.
 
 ## geometry
-Contains a Rhino and Grasshopper file that allows to parametrically generate the 3D-Volume of the beam, load and support plates (.sat files) as well as related datum planes (.dp files with coordinates) and reference points (.rp files with coordinates)
+Contains a Rhino and Grasshopper file that allows to parametrically generate the 3D-Volume of the beam, load and support plates (.sat files) as well as related datum planes (.dp files containing a surface coordinate and it's nomal vector) and reference points (.rp files with coordinates and type(s) of the reference point (eg. mpc_beam))
 
 ## parts
-Grasshopper is used to export the .sat, .dp and .rp files to the parts folder
+Grasshopper is used to export the .sat, .dp and .rp files to the parts folder. 
