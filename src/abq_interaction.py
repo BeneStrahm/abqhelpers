@@ -41,3 +41,21 @@ def create_embedded_region(model, name, embeddedInstance, hostInstace):
 
     model.EmbeddedRegion(name=name, embeddedRegion=embeddedRegion, hostRegion=hostRegion,
                          weightFactorTolerance=1e-06, absoluteTolerance=0.0, fractionalTolerance=0.05, toleranceMethod=BOTH)
+
+
+def create_mpc_beam_constraint(model, referencePoint, instance):
+    # Get reference point
+    a = model.rootAssembly
+    controlPoint = a.Set(referencePoints=(
+        referencePoint[1],), name="m_" + referencePoint[0].name,)
+
+    # Get corresponding face
+    f = a.instances[instance].faces
+    myFace = f.findAt(
+        (referencePoint[0].xValue, referencePoint[0].yValue, referencePoint[0].zValue),)
+    face = (f[myFace.index:myFace.index+1], )
+    surface = a.Set(name="s_" + referencePoint[0].name, faces=face)
+
+    # Create MPC
+    model.MultipointConstraint(name="mpc_beam_" + referencePoint[0].name, controlPoint=controlPoint,
+                               surface=surface, mpcType=BEAM_MPC, userMode=DOF_MODE_MPC, userType=0, csys=None)
