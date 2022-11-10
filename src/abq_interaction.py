@@ -47,15 +47,38 @@ def create_mpc_beam_constraint(model, referencePoint, instance):
     # Get reference point
     a = model.rootAssembly
     controlPoint = a.Set(referencePoints=(
-        referencePoint[1],), name="m_" + referencePoint[0].name,)
+        referencePoint[1],), name="m_mpc_beam_" + referencePoint[0].name,)
 
     # Get corresponding face
     f = a.instances[instance].faces
     myFace = f.findAt(
         (referencePoint[0].xValue, referencePoint[0].yValue, referencePoint[0].zValue),)
+
     face = (f[myFace.index:myFace.index+1], )
-    surface = a.Set(name="s_" + referencePoint[0].name, faces=face)
+    surface = a.Set(name="s_mpc_beam__" + referencePoint[0].name, faces=face)
 
     # Create MPC
     model.MultipointConstraint(name="mpc_beam_" + referencePoint[0].name, controlPoint=controlPoint,
                                surface=surface, mpcType=BEAM_MPC, userMode=DOF_MODE_MPC, userType=0, csys=None)
+
+
+def create_tie_surface_point(model, referencePoint, masterInstance, slaveInstance):
+    a = model.rootAssembly
+
+    # Get corresponding face (closest face within  tolerance)
+    f = a.instances[masterInstance].faces
+    myFace = f.getClosest(coordinates=(
+        (referencePoint[0].xValue, referencePoint[0].yValue, referencePoint[0].zValue),), searchTolerance=1)
+    face = (f[myFace[0][0].index:myFace[0][0].index+1], )
+    master = a.Set(name="m_tie_" + referencePoint[0].name, faces=face)
+
+    # Get slave point
+    v = a.instances[slaveInstance].vertices
+    myVertex = v.getClosest(coordinates=(
+        (referencePoint[0].xValue, referencePoint[0].yValue, referencePoint[0].zValue),), searchTolerance=1)
+    vertex = (v[myVertex[0][0].index:myVertex[0][0].index+1], )
+    slave = a.Set(vertices=vertex, name="s_tie_" + referencePoint[0].name, )
+
+    # Create Tie
+    model.Tie(name="tie_" + referencePoint[0].name, master=master, slave=slave,
+              positionToleranceMethod=COMPUTED, adjust=ON, tieRotations=ON, thickness=ON)

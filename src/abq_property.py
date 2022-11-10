@@ -16,6 +16,9 @@
 
 from abaqus import *
 from abaqusConstants import *
+from driverUtils import *
+from caeModules import *
+
 import os
 import pickle
 import numpy as np
@@ -53,6 +56,19 @@ def create_homogenous_solid_section(model, sectionName, material, thickness=None
 def create_circular_truss_section(model, sectionName, material, radius=1):
     model.TrussSection(name=sectionName, material=material,
                        area=np.pi*radius**2)
+
+
+def create_circular_beam_section(model, sectionName, material, radius=1.0):
+    model.CircularProfile(name='circular_d_'+str(int(radius)), r=radius)
+    model.BeamSection(name=sectionName, integration=DURING_ANALYSIS, poissonRatio=0.0, profile='circular_d_'+str(int(radius)),
+                      material=material, temperatureVar=LINEAR, consistentMassMatrix=False)
+
+
+def assign_beam_section_orientation(model, part, n1=(0.0, 0.0, -1.0)):
+    p = model.parts[part]
+    e = p.edges[:]
+    region = regionToolset.Region(edges=e)
+    p.assignBeamSectionOrientation(region=region, method=N1_COSINES, n1=n1)
 
 
 def assign_section(model, part, setName, sectionName):
