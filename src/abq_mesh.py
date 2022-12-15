@@ -36,6 +36,13 @@ def seed_all_active_instances(model, size=10.0, deviationFactor=0.1, minSizeFact
             a.seedPartInstance(
                 regions=(a.instances[key],), size=size, deviationFactor=deviationFactor, minSizeFactor=minSizeFactor),
 
+def seed_active_instance(model, instance, size=10.0, deviationFactor=0.1, minSizeFactor=0.1):
+    a = model.rootAssembly
+    # choose only active instances
+    if a.instances[instance].ips != None:
+        # seed part instance
+        a.seedPartInstance(
+            regions=(a.instances[instance],), size=size, deviationFactor=deviationFactor, minSizeFactor=minSizeFactor),
 
 def assign_mesh_control_all_active_instances(model, elemTypes, elemShape=TET, technique=FREE, ):
     a = model.rootAssembly
