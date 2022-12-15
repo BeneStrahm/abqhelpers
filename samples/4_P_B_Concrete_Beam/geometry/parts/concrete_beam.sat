@@ -1,0 +1,498 @@
+400 0 1 0        
+7 Unknown 13 ACIS 5.0.1 NT 24 Thu Dec 15 20:27:01 2022
+1 9.9999999999999995e-007 1e-010 
+-0 body $-1 $2 $-1 $1 #                                                                                            
+-1 transform $-1 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 #
+-2 lump $-1 $-1 $3 $0 #
+-3 shell $-1 $-1 $-1 $4 $-1 $2 #
+-4 face $-1 $15 $6 $3 $-1 $5 forward single #
+-5 spline-surface $-1 forward { exactsur nubs 1 1 open open none none 2 2
+        0 1 100 1 
+        0 1 100 1 
+        0 100 0 
+        0 0 0 
+        0 100 100 
+        0 0 100 
+        0
+        0
+        0
+        0
+        0
+        0
+        0
+        F 0 F 100 F 0 F 100 } F 0 F 100 F 0 F 100 #
+-6 loop $-1 $-1 $7 $4 #
+-7 coedge $-1 $9 $13 $57 $70 forward $6 $8 #
+-8 pcurve $-1 0 forward { exppc nubs 1 open 2
+        0 1 100 1 
+        0 0 
+        100 0 
+        0
+        spline 0 { ref 0 } F 0 F 100 F 0 F 100 
+        } 0 0 #
+-9 coedge $-1 $11 $7 $24 $72 forward $6 $10 #
+-10 pcurve $-1 0 forward { exppc nubs 1 open 2
+        0 1 100 1 
+        100 0 
+        100 100 
+        0
+        spline 0 { ref 0 } F 0 F 100 F 0 F 100 
+        } 0 0 #
+-11 coedge $-1 $13 $9 $62 $74 reversed $6 $12 #
+-12 pcurve $-1 0 forward { exppc nubs 1 open 2
+        -100 1 0 1 
+        100 100 
+        0 100 
+        0
+        spline 0 { ref 0 } F 0 F 100 F 0 F 100 
+        } 0 0 #
+-13 coedge $-1 $7 $11 $42 $76 reversed $6 $14 #
+-14 pcurve $-1 0 forward { exppc nubs 1 open 2
+        -100 1 0 1 
+        0 100 
+        0 0 
+        0
+        spline 0 { ref 0 } F 0 F 100 F 0 F 100 
+        } 0 0 #
+-15 face $-1 $26 $17 $3 $-1 $16 forward single #
+-16 spline-surface $-1 forward { exactsur nubs 1 1 open open none none 2 2
+        100 1 1300 1 
+        0 1 100 1 
+        0 0 0 
+        1200 0 0 
+        0 0 100 
+        1200 0 100 
+        0
+        0
+        0
+        0
+        0
+        0
+        0
+        F 100 F 1300 F 0 F 100 } F 100 F 1300 F 0 F 100 #
+-17 loop $-1 $-1 $18 $15 #
+-18 coedge $-1 $20 $24 $55 $78 forward $17 $19 #
+-19 pcurve $-1 0 forward { exppc nubs 1 open 2
+        100 1 1300 1 
+        100 0 
+        1300 0 
+        0
+        spline 0 { ref 5 } F 100 F 1300 F 0 F 100 
+        } 0 0 #
+-20 coedge $-1 $22 $18 $35 $80 forward $17 $21 #
+-21 pcurve $-1 0 forward { exppc nubs 1 open 2
+        0 1 100 1 
+        1300 0 
+        1300 100 
+        0
+        spline 0 { ref 5 } F 100 F 1300 F 0 F 100 
+        } 0 0 #
+-22 coedge $-1 $24 $20 $64 $82 reversed $17 $23 #
+-23 pcurve $-1 0 forward { exppc nubs 1 open 2
+        -1300 1 -100 1 
+        1300 100 
+        100 100 
+        0
+        spline 0 { ref 5 } F 100 F 1300 F 0 F 100 
+        } 0 0 #
+-24 coedge $-1 $18 $22 $9 $72 reversed $17 $25 #
+-25 pcurve $-1 0 forward { exppc nubs 1 open 2
+        -100 1 0 1 
+        100 100 
+        100 0 
+        0
+        spline 0 { ref 5 } F 100 F 1300 F 0 F 100 
+        } 0 0 #
+-26 face $-1 $37 $28 $3 $-1 $27 forward single #
+-27 spline-surface $-1 forward { exactsur nubs 1 1 open open none none 2 2
+        1300 1 1400 1 
+        0 1 100 1 
+        1200 0 0 
+        1200 100 0 
+        1200 0 100 
+        1200 100 100 
+        0
+        0
+        0
+        0
+        0
+        0
+        0
+        F 1300 F 1400 F 0 F 100 } F 1300 F 1400 F 0 F 100 #
+-28 loop $-1 $-1 $29 $26 #
+-29 coedge $-1 $31 $35 $53 $84 forward $28 $30 #
+-30 pcurve $-1 0 forward { exppc nubs 1 open 2
+        1300 1 1400 1 
+        1300 0 
+        1400 0 
+        0
+        spline 0 { ref 10 } F 1300 F 1400 F 0 F 100 
+        } 0 0 #
+-31 coedge $-1 $33 $29 $46 $86 forward $28 $32 #
+-32 pcurve $-1 0 forward { exppc nubs 1 open 2
+        0 1 100 1 
+        1400 0 
+        1400 100 
+        0
+        spline 0 { ref 10 } F 1300 F 1400 F 0 F 100 
+        } 0 0 #
+-33 coedge $-1 $35 $31 $66 $88 reversed $28 $34 #
+-34 pcurve $-1 0 forward { exppc nubs 1 open 2
+        -1400 1 -1300 1 
+        1400 100 
+        1300 100 
+        0
+        spline 0 { ref 10 } F 1300 F 1400 F 0 F 100 
+        } 0 0 #
+-35 coedge $-1 $29 $33 $20 $80 reversed $28 $36 #
+-36 pcurve $-1 0 forward { exppc nubs 1 open 2
+        -100 1 0 1 
+        1300 100 
+        1300 0 
+        0
+        spline 0 { ref 10 } F 1300 F 1400 F 0 F 100 
+        } 0 0 #
+-37 face $-1 $48 $39 $3 $-1 $38 forward single #
+-38 spline-surface $-1 forward { exactsur nubs 1 1 open open none none 2 2
+        1400 1 2600 1 
+        0 1 100 1 
+        1200 100 0 
+        0 100 0 
+        1200 100 100 
+        0 100 100 
+        0
+        0
+        0
+        0
+        0
+        0
+        0
+        F 1400 F 2600 F 0 F 100 } F 1400 F 2600 F 0 F 100 #
+-39 loop $-1 $-1 $40 $37 #
+-40 coedge $-1 $42 $46 $51 $90 forward $39 $41 #
+-41 pcurve $-1 0 forward { exppc nubs 1 open 2
+        1400 1 2600 1 
+        1400 0 
+        2600 0 
+        0
+        spline 0 { ref 15 } F 1400 F 2600 F 0 F 100 
+        } 0 0 #
+-42 coedge $-1 $44 $40 $13 $76 forward $39 $43 #
+-43 pcurve $-1 0 forward { exppc nubs 1 open 2
+        0 1 100 1 
+        2600 0 
+        2600 100 
+        0
+        spline 0 { ref 15 } F 1400 F 2600 F 0 F 100 
+        } 0 0 #
+-44 coedge $-1 $46 $42 $68 $92 reversed $39 $45 #
+-45 pcurve $-1 0 forward { exppc nubs 1 open 2
+        -2600 1 -1400 1 
+        2600 100 
+        1400 100 
+        0
+        spline 0 { ref 15 } F 1400 F 2600 F 0 F 100 
+        } 0 0 #
+-46 coedge $-1 $40 $44 $31 $86 reversed $39 $47 #
+-47 pcurve $-1 0 forward { exppc nubs 1 open 2
+        -100 1 0 1 
+        1400 100 
+        1400 0 
+        0
+        spline 0 { ref 15 } F 1400 F 2600 F 0 F 100 
+        } 0 0 #
+-48 face $-1 $59 $50 $3 $-1 $49 forward single #
+-49 spline-surface $-1 forward { exactsur nubs 1 1 open open none none 2 2
+        0 1 1200 1 
+        0 1 100 1 
+        0 100 0 
+        1200 100 0 
+        0 0 0 
+        1200 0 0 
+        0
+        0
+        0
+        0
+        0
+        0
+        0
+        F 0 F 1200 F 0 F 100 } F 0 F 1200 F 0 F 100 #
+-50 loop $-1 $-1 $51 $48 #
+-51 coedge $-1 $53 $57 $40 $90 reversed $50 $52 #
+-52 pcurve $-1 0 forward { exppc nubs 1 open 2
+        -2600 1 -1400 1 
+        0 0 
+        1200 0 
+        0
+        spline 0 { ref 20 } F 0 F 1200 F 0 F 100 
+        } 0 0 #
+-53 coedge $-1 $55 $51 $29 $84 reversed $50 $54 #
+-54 pcurve $-1 0 forward { exppc nubs 1 open 2
+        -1400 1 -1300 1 
+        1200 0 
+        1200 100 
+        0
+        spline 0 { ref 20 } F 0 F 1200 F 0 F 100 
+        } 0 0 #
+-55 coedge $-1 $57 $53 $18 $78 reversed $50 $56 #
+-56 pcurve $-1 0 forward { exppc nubs 1 open 2
+        -1300 1 -100 1 
+        1200 100 
+        0 100 
+        0
+        spline 0 { ref 20 } F 0 F 1200 F 0 F 100 
+        } 0 0 #
+-57 coedge $-1 $51 $55 $7 $70 reversed $50 $58 #
+-58 pcurve $-1 0 forward { exppc nubs 1 open 2
+        -100 1 -0 1 
+        0 100 
+        0 0 
+        0
+        spline 0 { ref 20 } F 0 F 1200 F 0 F 100 
+        } 0 0 #
+-59 face $-1 $-1 $61 $3 $-1 $60 forward single #
+-60 spline-surface $-1 forward { exactsur nubs 1 1 open open none none 2 2
+        0 1 100 1 
+        0 1 1200 1 
+        0 100 100 
+        0 0 100 
+        1200 100 100 
+        1200 0 100 
+        0
+        0
+        0
+        0
+        0
+        0
+        0
+        F 0 F 100 F 0 F 1200 } F 0 F 100 F 0 F 1200 #
+-61 loop $-1 $-1 $62 $59 #
+-62 coedge $-1 $64 $68 $11 $74 forward $61 $63 #
+-63 pcurve $-1 0 forward { exppc nubs 1 open 2
+        0 1 100 1 
+        0 0 
+        100 0 
+        0
+        spline 0 { ref 25 } F 0 F 100 F 0 F 1200 
+        } 0 0 #
+-64 coedge $-1 $66 $62 $22 $82 forward $61 $65 #
+-65 pcurve $-1 0 forward { exppc nubs 1 open 2
+        100 1 1300 1 
+        100 0 
+        100 1200 
+        0
+        spline 0 { ref 25 } F 0 F 100 F 0 F 1200 
+        } 0 0 #
+-66 coedge $-1 $68 $64 $33 $88 forward $61 $67 #
+-67 pcurve $-1 0 forward { exppc nubs 1 open 2
+        1300 1 1400 1 
+        100 1200 
+        0 1200 
+        0
+        spline 0 { ref 25 } F 0 F 100 F 0 F 1200 
+        } 0 0 #
+-68 coedge $-1 $62 $66 $44 $92 forward $61 $69 #
+-69 pcurve $-1 0 forward { exppc nubs 1 open 2
+        1400 1 2600 1 
+        0 1200 
+        0 0 
+        0
+        spline 0 { ref 25 } F 0 F 100 F 0 F 1200 
+        } 0 0 #
+-70 edge $-1 $94 $96 $7 $71 forward #
+-71 intcurve-curve $-1 forward { exactcur nubs 1 open 2
+        0 1 100 1 
+        0 100 0 
+        0 0 0 
+        0
+        null_surface
+        null_surface
+        nullbs
+        nullbs
+        I I
+        0
+        0
+        0
+        F 0 F 100 } F 0 F 100 #
+-72 edge $-1 $96 $98 $9 $73 forward #
+-73 intcurve-curve $-1 forward { exactcur nubs 1 open 2
+        0 1 100 1 
+        0 0 0 
+        0 0 100 
+        0
+        null_surface
+        null_surface
+        nullbs
+        nullbs
+        I I
+        0
+        0
+        0
+        F 0 F 100 } F 0 F 100 #
+-74 edge $-1 $100 $98 $11 $75 forward #
+-75 intcurve-curve $-1 forward { exactcur nubs 1 open 2
+        0 1 100 1 
+        0 100 100 
+        0 0 100 
+        0
+        null_surface
+        null_surface
+        nullbs
+        nullbs
+        I I
+        0
+        0
+        0
+        F 0 F 100 } F 0 F 100 #
+-76 edge $-1 $94 $100 $13 $77 forward #
+-77 intcurve-curve $-1 forward { exactcur nubs 1 open 2
+        0 1 100 1 
+        0 100 0 
+        0 100 100 
+        0
+        null_surface
+        null_surface
+        nullbs
+        nullbs
+        I I
+        0
+        0
+        0
+        F 0 F 100 } F 0 F 100 #
+-78 edge $-1 $96 $102 $18 $79 forward #
+-79 intcurve-curve $-1 forward { exactcur nubs 1 open 2
+        100 1 1300 1 
+        0 0 0 
+        1200 0 0 
+        0
+        null_surface
+        null_surface
+        nullbs
+        nullbs
+        I I
+        0
+        0
+        0
+        F 100 F 1300 } F 100 F 1300 #
+-80 edge $-1 $102 $104 $20 $81 forward #
+-81 intcurve-curve $-1 forward { exactcur nubs 1 open 2
+        0 1 100 1 
+        1200 0 0 
+        1200 0 100 
+        0
+        null_surface
+        null_surface
+        nullbs
+        nullbs
+        I I
+        0
+        0
+        0
+        F 0 F 100 } F 0 F 100 #
+-82 edge $-1 $98 $104 $22 $83 forward #
+-83 intcurve-curve $-1 forward { exactcur nubs 1 open 2
+        100 1 1300 1 
+        0 0 100 
+        1200 0 100 
+        0
+        null_surface
+        null_surface
+        nullbs
+        nullbs
+        I I
+        0
+        0
+        0
+        F 100 F 1300 } F 100 F 1300 #
+-84 edge $-1 $102 $106 $29 $85 forward #
+-85 intcurve-curve $-1 forward { exactcur nubs 1 open 2
+        1300 1 1400 1 
+        1200 0 0 
+        1200 100 0 
+        0
+        null_surface
+        null_surface
+        nullbs
+        nullbs
+        I I
+        0
+        0
+        0
+        F 1300 F 1400 } F 1300 F 1400 #
+-86 edge $-1 $106 $108 $31 $87 forward #
+-87 intcurve-curve $-1 forward { exactcur nubs 1 open 2
+        0 1 100 1 
+        1200 100 0 
+        1200 100 100 
+        0
+        null_surface
+        null_surface
+        nullbs
+        nullbs
+        I I
+        0
+        0
+        0
+        F 0 F 100 } F 0 F 100 #
+-88 edge $-1 $104 $108 $33 $89 forward #
+-89 intcurve-curve $-1 forward { exactcur nubs 1 open 2
+        1300 1 1400 1 
+        1200 0 100 
+        1200 100 100 
+        0
+        null_surface
+        null_surface
+        nullbs
+        nullbs
+        I I
+        0
+        0
+        0
+        F 1300 F 1400 } F 1300 F 1400 #
+-90 edge $-1 $106 $94 $40 $91 forward #
+-91 intcurve-curve $-1 forward { exactcur nubs 1 open 2
+        1400 1 2600 1 
+        1200 100 0 
+        0 100 0 
+        0
+        null_surface
+        null_surface
+        nullbs
+        nullbs
+        I I
+        0
+        0
+        0
+        F 1400 F 2600 } F 1400 F 2600 #
+-92 edge $-1 $108 $100 $44 $93 forward #
+-93 intcurve-curve $-1 forward { exactcur nubs 1 open 2
+        1400 1 2600 1 
+        1200 100 100 
+        0 100 100 
+        0
+        null_surface
+        null_surface
+        nullbs
+        nullbs
+        I I
+        0
+        0
+        0
+        F 1400 F 2600 } F 1400 F 2600 #
+-94 vertex $-1 $70 $95 #
+-95 point $-1 0 100 0 #
+-96 vertex $-1 $70 $97 #
+-97 point $-1 0 0 0 #
+-98 vertex $-1 $72 $99 #
+-99 point $-1 0 0 100 #
+-100 vertex $-1 $74 $101 #
+-101 point $-1 0 100 100 #
+-102 vertex $-1 $78 $103 #
+-103 point $-1 1200 0 0 #
+-104 vertex $-1 $80 $105 #
+-105 point $-1 1200 0 100 #
+-106 vertex $-1 $84 $107 #
+-107 point $-1 1200 100 0 #
+-108 vertex $-1 $86 $109 #
+-109 point $-1 1200 100 100 #
+End-of-ACIS-data
