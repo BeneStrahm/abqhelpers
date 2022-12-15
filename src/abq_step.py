@@ -93,3 +93,5 @@ def create_prestress_temperature_at_solid(model, instance, magnitude, stepName='
 def deactivate_boundary_condition(model, bcName, stepName):
     model.boundaryConditions[bcName].deactivate(stepName)
 
+def reset_predefined_field_to_initial(model, fieldName, stepName):
+    model.predefinedFields[fieldName].resetToInitial(stepName)
