@@ -29,21 +29,18 @@ from abaqusConstants import *
 def create_job(model, job_name, cpu):
     a = model.rootAssembly
     a.regenerate()
-    mdb.Job(name=job_name, model=model.name, description='', 
-            type=ANALYSIS, atTime=None, waitMinutes=0, waitHours=0, queue=None, 
-            memory=90, memoryUnits=PERCENTAGE, getMemoryFromAnalysis=True, 
-            explicitPrecision=SINGLE, nodalOutputPrecision=SINGLE, echoPrint=OFF, 
-            modelPrint=OFF, contactPrint=OFF, historyPrint=OFF, userSubroutine='', 
+    mdb.Job(name=job_name, model=model.name, description='',
+            type=ANALYSIS, atTime=None, waitMinutes=0, waitHours=0, queue=None,
+            memory=90, memoryUnits=PERCENTAGE, getMemoryFromAnalysis=True,
+            explicitPrecision=SINGLE, nodalOutputPrecision=SINGLE, echoPrint=OFF,
+            modelPrint=OFF, contactPrint=OFF, historyPrint=OFF, userSubroutine='',
             scratch='', resultsFormat=ODB, multiprocessingMode=DEFAULT, numCpus=cpu,
             numDomains=cpu, numGPUs=0)
-
-# ------------------------------------------------------------------------------
 
 
 def submit_job(job_name):
     mdb.jobs[job_name].submit(consistencyChecking=OFF)
 
 
-# mdb.Job(name='Job-1', model='Concrete_beam_4_P_B', description='hihi',
-#         scratch='', resultsFormat=ODB, multiprocessingMode=DEFAULT, numCpus=4,
-#         numDomains=4, numGPUs=0)
+def submit_data_check(job_name):
+    mdb.jobs[job_name].submit(consistencyChecking=OFF, datacheckJob=True)

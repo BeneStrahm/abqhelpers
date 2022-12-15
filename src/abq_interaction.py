@@ -55,11 +55,30 @@ def create_mpc_beam_constraint(model, referencePoint, instance):
         (referencePoint[0].xValue, referencePoint[0].yValue, referencePoint[0].zValue),)
 
     face = (f[myFace.index:myFace.index+1], )
-    surface = a.Set(name="s_mpc_beam__" + referencePoint[0].name, faces=face)
+    surface = a.Set(name="s_mpc_beam_" + referencePoint[0].name, faces=face)
 
     # Create MPC
     model.MultipointConstraint(name="mpc_beam_" + referencePoint[0].name, controlPoint=controlPoint,
                                surface=surface, mpcType=BEAM_MPC, userMode=DOF_MODE_MPC, userType=0, csys=None)
+
+
+def create_mpc_tie_constraint(model, referencePoint, instance):
+    # Get reference point
+    a = model.rootAssembly
+    controlPoint = a.Set(referencePoints=(
+        referencePoint[1],), name="m_mpc_tie_" + referencePoint[0].name,)
+
+    # Get corresponding face
+    f = a.instances[instance].faces
+    myFace = f.findAt(
+        (referencePoint[0].xValue, referencePoint[0].yValue, referencePoint[0].zValue),)
+
+    face = (f[myFace.index:myFace.index+1], )
+    surface = a.Set(name="s_mpc_tie_" + referencePoint[0].name, faces=face)
+
+    # Create MPC
+    model.MultipointConstraint(name="mpc_tie_" + referencePoint[0].name, controlPoint=controlPoint,
+                               surface=surface, mpcType=TIE_MPC, userMode=DOF_MODE_MPC, userType=0, csys=None)
 
 
 def create_tie_surface_point(model, referencePoint, masterInstance, slaveInstance):
@@ -82,3 +101,55 @@ def create_tie_surface_point(model, referencePoint, masterInstance, slaveInstanc
     # Create Tie
     model.Tie(name="tie_" + referencePoint[0].name, master=master, slave=slave,
               positionToleranceMethod=COMPUTED, adjust=ON, tieRotations=ON, thickness=ON)
+
+
+def create_tie_surface_surface(model, referencePoint, masterInstance, slaveInstance):
+    a = model.rootAssembly
+
+    # Get corresponding face (closest face within tolerance)
+    f = a.instances[masterInstance].faces
+    myFace = f.getClosest(coordinates=(
+        (referencePoint[0].xValue, referencePoint[0].yValue, referencePoint[0].zValue),), searchTolerance=1)
+    face = (f[myFace[0][0].index:myFace[0][0].index+1], )
+    master = a.Set(name="m_tie_" + referencePoint[0].name, faces=face)
+
+    # Get slave surface (closest face within tolerance)
+    f = a.instances[slaveInstance].faces
+    myFace = f.getClosest(coordinates=(
+        (referencePoint[0].xValue, referencePoint[0].yValue, referencePoint[0].zValue),), searchTolerance=1)
+    face = (f[myFace[0][0].index:myFace[0][0].index+1], )
+    slave = a.Set(name="s_tie_" + referencePoint[0].name, faces=face)
+
+    # Create Tie
+    model.Tie(name="tie_" + referencePoint[0].name, master=master, slave=slave,
+              positionToleranceMethod=COMPUTED, adjust=ON, tieRotations=ON, thickness=ON)
+
+def create_coupling(model, referencePoint, controlInstance, slaveInstance, couplingType, u1=ON, u2=OFF, u3=OFF, ur1=OFF, ur2=OFF, ur3=OFF):
+    a = model.rootAssembly
+
+    # Get control point
+    v = a.instances[controlInstance].vertices
+    myVertex = v.getClosest(coordinates=(
+        (referencePoint[0].xValue, referencePoint[0].yValue, referencePoint[0].zValue),), searchTolerance=1)
+    vertex = (v[myVertex[0][0].index:myVertex[0][0].index+1], )
+    controlPoint = a.Set(
+        vertices=vertex, name="cp_coupling_" + referencePoint[0].name, )
+
+    # Get corresponding face (closest face within  tolerance)
+    f = a.instances[slaveInstance].faces
+    myFace = f.getClosest(coordinates=(
+        (referencePoint[0].xValue, referencePoint[0].yValue, referencePoint[0].zValue),), searchTolerance=1)
+    face = (f[myFace[0][0].index:myFace[0][0].index+1], )
+    surface = a.Set(name="surf_coupling_" + referencePoint[0].name, faces=face)
+
+    # Create Kinematic Coupling
+    model.Coupling(name="coupling_" + str(couplingType) + referencePoint[0].name, controlPoint=controlPoint, surface=surface,
+                   influenceRadius=WHOLE_SURFACE, couplingType=couplingType, localCsys=None, u1=u1, u2=u2, u3=u3, ur1=ur1, ur2=ur2, ur3=ur3)
+
+
+def create_kinematic_coupling(model, referencePoint, controlInstance, slaveInstance, u1=ON, u2=OFF, u3=OFF, ur1=OFF, ur2=OFF, ur3=OFF):
+    create_coupling(model, referencePoint, controlInstance, slaveInstance, KINEMATIC, u1=u1, u2=u2, u3=u3, ur1=ur1, ur2=ur2, ur3=ur3)
+
+def create_distributing_coupling(model, referencePoint, controlInstance, slaveInstance, u1=ON, u2=OFF, u3=OFF, ur1=OFF, ur2=OFF, ur3=OFF):
+    create_coupling(model, referencePoint, controlInstance, slaveInstance, DISTRIBUTING, u1=u1, u2=u2, u3=u3, ur1=ur1, ur2=ur2, ur3=ur3)
+
