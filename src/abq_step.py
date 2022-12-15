@@ -46,7 +46,7 @@ def create_hinge_support_at_RP(model, referencePoint, bcName='hinge_', stepName=
     # Get reference point
     a = model.rootAssembly
     region = a.Set(referencePoints=(
-        referencePoint[1],), name="roller_" + referencePoint[0].name,)
+        referencePoint[1],), name="hinge_" + referencePoint[0].name,)
     # Assign boundary condition
     model.DisplacementBC(name=bcName + referencePoint[0].name, createStepName=stepName, region=region, u1=SET, u2=SET, u3=SET,
                          ur1=SET, ur2=UNSET, ur3=UNSET, amplitude=UNSET, distributionType=UNIFORM, fieldName='', localCsys=None)
@@ -63,7 +63,7 @@ def create_suppress_axial_rotation_at_edge(model, instance, stepName="Initial"):
                          ur1=SET, ur2=UNSET, ur3=UNSET, amplitude=UNSET, distributionType=UNIFORM, fieldName='', localCsys=None)
 
 
-def create_vertical_load_at_RP(model, referencePoint, uz=1, bcName='load_disp_', stepName="Loading"):
+def create_vertical_disp_at_RP(model, referencePoint, uz=1, bcName='load_disp_', stepName="Loading"):
     # Get reference point
     a = model.rootAssembly
     region = a.Set(referencePoints=(
@@ -89,3 +89,7 @@ def create_prestress_temperature_at_solid(model, instance, magnitude, stepName='
     region = a.Set(cells=c, name='prestress_' + instance)
     model.Temperature(name='prestress_' + instance, createStepName=stepName, region=region,
                       distributionType=UNIFORM, crossSectionDistribution=CONSTANT_THROUGH_THICKNESS, magnitudes=(magnitude, ))
+
+def deactivate_boundary_condition(model, bcName, stepName):
+    model.boundaryConditions[bcName].deactivate(stepName)
+
