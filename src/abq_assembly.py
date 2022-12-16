@@ -33,7 +33,7 @@ def create_Assembly(model, part, instance, x=0, y=0, z=0):
     a.Instance(name=instance, part=p, dependent=OFF)
     i = a.instances[instance]
     i.translate(vector=(x, y, z))
-    return i
+    return i.name
 
 
 def create_boolean_merge_assembly(model, instanceNames, name):
@@ -44,7 +44,7 @@ def create_boolean_merge_assembly(model, instanceNames, name):
     i = a.InstanceFromBooleanMerge(name=name, instances=(
         instanceObjs), keepIntersections=ON, originalInstances=SUPPRESS, domain=GEOMETRY)
     a.makeIndependent(instances=(i, ))
-    return i
+    return  i.name
 
 
 def create_datum_plane_by_point_and_normal(model, point, normal):
@@ -78,3 +78,4 @@ def create_partition_by_datum_plane(model, instance, id_plane):
     c = a.instances[instance].cells[:]
     d = a.datums
     a.PartitionCellByDatumPlane(datumPlane=d[id_plane], cells=c, )
+    return myID

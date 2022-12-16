@@ -224,22 +224,28 @@ for ele in reinforcement:
 # Assembly
 # ----------------
 
+# List w/ all assemblies (instance.name)
+concrete_beams_asm = []
+load_plates_asm = []
+support_plates_asm = []
+reinforcement_asm = []
+
 # Create Assembly
 for ele in concrete_beam:
-    abq_assembly.create_Assembly(model, ele, ele)
+    concrete_beams_asm.append(abq_assembly.create_Assembly(model, ele, ele))
 for ele in load_plates:
-    abq_assembly.create_Assembly(model, ele, ele)
+    load_plates_asm.append(abq_assembly.create_Assembly(model, ele, ele))
 for ele in support_plates:
-    abq_assembly.create_Assembly(model, ele, ele)
+    support_plates_asm.append(abq_assembly.create_Assembly(model, ele, ele))
 for ele in reinforcement:
-    abq_assembly.create_Assembly(model, ele, ele)
+    reinforcement_asm.append(abq_assembly.create_Assembly(model, ele, ele))
 
 # Merge Assembly
-concrete_dummy_plates = concrete_beam + \
-    load_plates + support_plates 
+concrete_dummy_plates = concrete_beams_asm + \
+    load_plates_asm + support_plates_asm
 
-abq_assembly.create_boolean_merge_assembly(
-    model, concrete_dummy_plates, "concrete-dummy-plates",)
+concrete_dummy_plates_asm = abq_assembly.create_boolean_merge_assembly(
+    model, concrete_beams_asm + load_plates_asm + support_plates_asm, "concrete-dummy-plates",)
 
 # Create datum planes
 # ----------------
@@ -254,25 +260,26 @@ for filepath in filepaths:
         for l in f:
             (x, y, z, nx, ny, nz) = [float(x) for x in l.split(',')]
             datumIDs.append(abq_assembly.create_datum_plane_by_point_and_normal(
-                model, 'concrete-dummy-plates-1', [x, y, z], [nx, ny, nz]))
+                model, [x, y, z], [nx, ny, nz]))
 
 for myID in datumIDs:
     abq_assembly.create_partition_by_datum_plane(
-        model, 'concrete-dummy-plates-1', myID)
+        model, concrete_dummy_plates_asm, myID)
 
 # Interaction
 # ----------------
 
 # Create Embedded Region
-abq_interaction.create_embedded_region(
-    model, 'reinforcement', 'reinforcement-0', 'concrete-dummy-plates-1')
+for ele in reinforcement_asm:
+    abq_interaction.create_embedded_region(
+        model, 'reinforcement', ele, concrete_dummy_plates_asm)
 
 
 # Create MPC Beam Constraint
 for referencePoint in referencePoints:
     if 'mpc_beam' in referencePoint[1]:
         abq_interaction.create_mpc_beam_constraint(
-            model, referencePoint[0], 'concrete-dummy-plates-1')
+            model, referencePoint[0], concrete_dummy_plates_asm)
 
 # Step
 # ----------------
