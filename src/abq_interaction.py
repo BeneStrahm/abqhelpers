@@ -39,7 +39,7 @@ def create_embedded_region(model, name, embeddedInstance, hostInstace):
     e = a.instances[hostInstace].edges[:]
     hostRegion = a.Set(edges=e, cells=c, name='s_' + hostInstace)
 
-    model.EmbeddedRegion(name=name, embeddedRegion=embeddedRegion, hostRegion=hostRegion,
+    model.EmbeddedRegion(name="embedded_region_" + name, embeddedRegion=embeddedRegion, hostRegion=hostRegion,
                          weightFactorTolerance=1e-06, absoluteTolerance=0.0, fractionalTolerance=0.05, toleranceMethod=BOTH)
 
 
@@ -143,7 +143,7 @@ def create_coupling(model, referencePoint, controlInstance, slaveInstance, coupl
     surface = a.Set(name="surf_coupling_" + referencePoint[0].name, faces=face)
 
     # Create Kinematic Coupling
-    model.Coupling(name="coupling_" + str(couplingType) + referencePoint[0].name, controlPoint=controlPoint, surface=surface,
+    model.Coupling(name="coupling_" + str(couplingType).lower() + "_" + referencePoint[0].name, controlPoint=controlPoint, surface=surface,
                    influenceRadius=WHOLE_SURFACE, couplingType=couplingType, localCsys=None, u1=u1, u2=u2, u3=u3, ur1=ur1, ur2=ur2, ur3=ur3)
 
 

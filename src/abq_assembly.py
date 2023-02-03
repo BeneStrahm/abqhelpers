@@ -64,6 +64,10 @@ def create_datum_plane_by_point_and_normal(model, point, normal):
     myID = plane.id
     return myID
 
+def create_section_plane_by_point_and_normal(model, point, normal):
+    myID = create_datum_plane_by_point_and_normal(model, point, normal)
+    return myID
+
 
 def create_datum_plane_by_principal(model, part, principalPlane, offset):
     a = model.rootAssembly
@@ -77,5 +81,10 @@ def create_partition_by_datum_plane(model, instance, id_plane):
     a = model.rootAssembly
     c = a.instances[instance].cells[:]
     d = a.datums
-    a.PartitionCellByDatumPlane(datumPlane=d[id_plane], cells=c, )
-    return myID
+    try:
+        a.PartitionCellByDatumPlane(datumPlane=d[id_plane], cells=c, )
+    except:
+        print('Partitioning failed for instance: ' + instance)
+
+def create_partition_by_section_plane(model, instance, id_plane):
+    create_partition_by_datum_plane(model, instance, id_plane)
