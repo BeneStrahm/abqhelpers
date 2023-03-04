@@ -64,6 +64,7 @@ def create_datum_plane_by_point_and_normal(model, point, normal):
     myID = plane.id
     return myID
 
+
 def create_section_plane_by_point_and_normal(model, point, normal):
     myID = create_datum_plane_by_point_and_normal(model, point, normal)
     return myID
@@ -85,6 +86,7 @@ def create_partition_by_datum_plane(model, instance, id_plane):
         a.PartitionCellByDatumPlane(datumPlane=d[id_plane], cells=c, )
     except:
         print('Partitioning failed for instance: ' + instance)
+
 
 def create_partition_by_section_plane(model, instance, id_plane):
     create_partition_by_datum_plane(model, instance, id_plane)
