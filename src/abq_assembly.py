@@ -44,7 +44,7 @@ def create_boolean_merge_assembly(model, instanceNames, name):
     i = a.InstanceFromBooleanMerge(name=name, instances=(
         instanceObjs), keepIntersections=ON, originalInstances=SUPPRESS, domain=GEOMETRY)
     a.makeIndependent(instances=(i, ))
-    return  i.name
+    return i.name
 
 
 def create_datum_plane_by_point_and_normal(model, point, normal):
