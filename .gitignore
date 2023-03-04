@@ -126,3 +126,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Rhino
+*.3dmbak
+
+# Abaqus
+*.rpy
