@@ -9,7 +9,7 @@
 # EXECUTION:
 # 1. Open CMD in your working directory
 # 2. Run script in ABAQUS CAE
-# abaqus cae script=4_P_B_Concrete_Beam.py
+# abaqus cae script=preprocessor.py
 #
 # TAIL LOGS:
 # 1. Open CMD in your working directory
@@ -136,10 +136,12 @@ parts_path = os.path.join(dir_path, 'geometry', 'parts')
 
 concrete_beam = abq_parts.import_3_d_parts(model, os.path.join(
     parts_path, 'concrete_beam.sat'))
-load_plates = abq_parts.import_3_d_parts(model, os.path.join(
-    parts_path, 'load_plate.sat'), bodyNum=2, combine=False, mergeSolidRegions=False)
-support_plates = abq_parts.import_3_d_parts(model, os.path.join(
-    parts_path, 'support_plate.sat'), bodyNum=2, combine=False, mergeSolidRegions=False)
+load_plates = abq_parts.import_3_d_parts(
+    model, os.path.join(parts_path, 'load_plate.sat'),
+    bodyNum=2, combine=False, mergeSolidRegions=False)
+support_plates = abq_parts.import_3_d_parts(
+    model, os.path.join(parts_path, 'support_plate.sat'),
+    bodyNum=2, combine=False, mergeSolidRegions=False)
 reinforcement = abq_parts.import_3_d_parts(model, os.path.join(
     parts_path, 'reinforcement.sat'))
 
@@ -245,7 +247,8 @@ concrete_dummy_plates = concrete_beams_asm + \
     load_plates_asm + support_plates_asm
 
 concrete_dummy_plates_asm = abq_assembly.create_boolean_merge_assembly(
-    model, concrete_beams_asm + load_plates_asm + support_plates_asm, "concrete-dummy-plates",)
+    model, concrete_beams_asm + load_plates_asm + support_plates_asm,
+    "concrete-dummy-plates",)
 
 # Create datum planes
 # ----------------
@@ -302,7 +305,8 @@ abq_step.create_analysis_step(
 for referencePoint in referencePoints:
     if 'load_u3' in referencePoint[1]:
         abq_step.create_vertical_disp_at_RP(
-            model, referencePoint[0], uz=-10, bcName='load_disp_', stepName='load_disp')
+            model, referencePoint[0],
+            uz=-10, bcName='load_disp_', stepName='load_disp')
 
 # Generate Mesh
 # ----------------
