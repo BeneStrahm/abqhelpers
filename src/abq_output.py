@@ -17,6 +17,7 @@
 from abaqus import *
 from abaqusConstants import *
 import os
+import regionToolset
 
 # ------------------------------------------------------------------------------
 # Classes
@@ -31,14 +32,18 @@ def create_time_points(model, name, start=0.0, end=1.0, increment=0.01):
     model.TimePoint(name=name, points=((start, end, increment),), )
 
 
-def create_history_output_whole_model(model, name, stepName, timePoint, variables=PRESELECT):
+def create_history_output_whole_model(
+        model, name, stepName, timePoint, variables=PRESELECT):
     model.HistoryOutputRequest(
-        name=name, createStepName=stepName, variables=variables, timePoint=timePoint)
+        name=name, createStepName=stepName, variables=variables,
+        timePoint=timePoint)
 
 
-def create_field_output_whole_model(model, name, stepName, timePoint, variables=PRESELECT):
+def create_field_output_whole_model(
+        model, name, stepName, timePoint, variables=PRESELECT):
     model.FieldOutputRequest(
-        name=name, createStepName=stepName, variables=variables, timePoint=timePoint)
+        name=name, createStepName=stepName, variables=variables,
+        timePoint=timePoint)
 
 
 def get_predefined_field_variables_structural_analysis():
@@ -46,7 +51,58 @@ def get_predefined_field_variables_structural_analysis():
 
 
 def get_predefined_field_variables_thermal_analysis():
-    return (('S', 'MISES', 'E', 'THE', 'U', 'RF', 'HFL', 'NT', 'RFL'))
+    return (('HFL', 'NT', 'RFL'))
+
+
+def create_integrated_output_section(
+        model, instance, sectionName, point, normal):
+    """
+    Create integrated output section at a given instance partioned by a datum plane. Currently only works for planes parallel to the coordinate system axes.
+    :param model: ABAQUS model object
+    :param instance: A String specifying the repository key of the instance.
+    :param sectionName: A String specifying the name of the section.
+    :param point: A tuple of three floats specifying the point on the section plane.
+    :param normal: A tuple of three floats specifying the normal vector of the section plane.
+    """
+    # Get offset of section plane depending on it's orientation
+    if not normal[0] == 0:
+        offset = point[0]
+    elif not normal[1] == 0:
+        offset = point[1]
+    elif not normal[2] == 0:
+        offset = point[2]
+
+    # Get all faces of the instance
+    a = model.rootAssembly
+    f = a.instances[instance].faces[:]
+    faceSet = []
+
+    # Create list with points of faces that are on the section plane
+    # The pointOn attribute is used to create a list. Like this the faces can be
+    # refound to create a set with all faces using findAt() and a tuple of the points.
+    for myFace in f:
+        if not normal[0] == 0:
+            if myFace.pointOn[0][0] == offset:
+                faceSet.append(myFace.pointOn[0])
+        elif not normal[1] == 0:
+            if myFace.pointOn[0][1] == offset:
+                faceSet.append(myFace.pointOn[0])
+        elif not normal[2] == 0:
+            if myFace.pointOn[0][2] == offset:
+                faceSet.append(myFace.pointOn[0])
+
+    # Create set with faces that are on the section plane by point
+    faces = f.findAt(tuple(faceSet))
+    sFaces = a.Surface(side1Faces=faces, name=sectionName+'-f')
+
+    # Convert set with faces to region
+    s = sFaces.faces[:]
+    region = regionToolset.Region(side1Faces=s)
+
+    # Create integrated output section
+    model.IntegratedOutputSection(
+        name=sectionName, surface=region)
+
 
 # def create_history_output_at_RP(model, referencePoint, stepName=None, variables=()):
 #     # Get reference point
