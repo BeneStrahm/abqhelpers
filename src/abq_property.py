@@ -45,10 +45,13 @@ def import_from_material_library(libPath, modelName, matName):
     # import to model
     from material import createMaterialFromDataString
     createMaterialFromDataString(
-        modelName, matTuple["Vendor material name"], matTuple["version"], matTuple['Data'])
+        modelName, matTuple["Vendor material name"],
+        matTuple["version"],
+        matTuple['Data'])
 
 
-def create_homogenous_solid_section(model, sectionName, material, thickness=None):
+def create_homogenous_solid_section(
+        model, sectionName, material, thickness=None):
     model.HomogeneousSolidSection(
         name=sectionName, material=material, thickness=thickness)
 
@@ -60,8 +63,10 @@ def create_circular_truss_section(model, sectionName, material, radius=1):
 
 def create_circular_beam_section(model, sectionName, material, radius=1.0):
     model.CircularProfile(name='circular_d_'+str(int(radius)), r=radius)
-    model.BeamSection(name=sectionName, integration=DURING_ANALYSIS, poissonRatio=0.0, profile='circular_d_'+str(int(radius)),
-                      material=material, temperatureVar=LINEAR, consistentMassMatrix=False)
+    model.BeamSection(
+        name=sectionName, integration=DURING_ANALYSIS, poissonRatio=0.0,
+        profile='circular_d_' + str(int(radius)),
+        material=material, temperatureVar=LINEAR, consistentMassMatrix=False)
 
 
 def assign_beam_section_orientation(model, part, n1=(0.0, 0.0, -1.0)):
@@ -74,5 +79,7 @@ def assign_beam_section_orientation(model, part, n1=(0.0, 0.0, -1.0)):
 def assign_section(model, part, setName, sectionName):
     p = model.parts[part]
     region = p.sets[setName]
-    p.SectionAssignment(region=region, sectionName=sectionName, offset=0.0,
-                        offsetType=MIDDLE_SURFACE, offsetField='', thicknessAssignment=FROM_SECTION)
+    p.SectionAssignment(
+        region=region, sectionName=sectionName, offset=0.0,
+        offsetType=MIDDLE_SURFACE, offsetField='',
+        thicknessAssignment=FROM_SECTION)
