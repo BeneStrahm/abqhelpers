@@ -39,6 +39,23 @@ def create_history_output_whole_model(
         timePoint=timePoint)
 
 
+def create_history_output_integrated_section(
+        model, name, stepName, timePoint, sectionName, variables=ALL):
+    """
+    _summary_
+    :param model: ABAQUS model object
+    :param name: Repository key of the output request
+    :param stepName: A String specifying the name of the step in which the field is created.
+    :param timePoint: A String specifying the name of the time points
+    :param sectionName: A String specifying the name of the section.
+    :param variables: A tuple of strings specifying the variables to be output.
+    """
+    model.HistoryOutputRequest(
+        name=name, createStepName=stepName, variables=variables,
+        timePoint=timePoint, integratedOutputSection=sectionName,
+        sectionPoints=DEFAULT, rebar=EXCLUDE)
+
+
 def create_field_output_whole_model(
         model, name, stepName, timePoint, variables=PRESELECT):
     model.FieldOutputRequest(

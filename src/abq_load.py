@@ -28,12 +28,12 @@ import numpy as np
 
 
 def create_predefined_field_all_instances(
-        model, fieldName, createStepName, magnitude):
+        model, fieldName, stepName, magnitude):
     """
     Create a predefined field for all instances in the model
     :param model: ABAQUS model object
     :param fieldName: A String specifying the repository key.
-    :param createStepName: A String specifying the name of the step in which the field is created.
+    :param stepName: A String specifying the name of the step in which the field is created.
     :param magnitude: A Float specifying the magnitude of the field.
     """
     a = model.rootAssembly
@@ -47,7 +47,7 @@ def create_predefined_field_all_instances(
             region = a.Set(vertices=v, edges=e, faces=f, cells=c,
                            name='predefined_field_' + fieldName)
             model.Temperature(
-                name=fieldName, createStepName=createStepName, region=region,
+                name=fieldName, stepName=stepName, region=region,
                 distributionType=UNIFORM,
                 crossSectionDistribution=CONSTANT_THROUGH_THICKNESS,
                 magnitudes=(magnitude,))
