@@ -44,6 +44,7 @@ def create_analysis_step(
         name=stepName, previous=preStepName, initialInc=initialInc,
         maxInc=maxInc, minInc=minInc, nlgeom=nlgeom)
     model.steps[stepName].setValues(maxNumInc=incNumber)
+    return stepName
 
 
 def create_analysis_step_with_temp(
@@ -65,6 +66,7 @@ def create_analysis_step_with_temp(
         name=stepName, previous=preStepName, timePeriod=timePeriod,
         maxNumInc=maxNumInc, initialInc=initialInc, minInc=minInc,
         maxInc=maxInc, deltmx=deltmx)
+    return stepName
 
 
 def create_roller_support_at_RP(

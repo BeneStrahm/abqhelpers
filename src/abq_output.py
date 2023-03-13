@@ -28,39 +28,44 @@ import regionToolset
 # ------------------------------------------------------------------------------
 
 
-def create_time_points(model, name, start=0.0, end=1.0, increment=0.01):
-    model.TimePoint(name=name, points=((start, end, increment),), )
+def create_time_points(
+        model, timePointName, start=0.0, end=1.0, increment=0.01):
+    model.TimePoint(name=timePointName, points=((start, end, increment),), )
+    return timePointName
 
 
 def create_history_output_whole_model(
-        model, name, stepName, timePoint, variables=PRESELECT):
+        model, stepName, timePointName, variables=PRESELECT):
     model.HistoryOutputRequest(
-        name=name, createStepName=stepName, variables=variables,
-        timePoint=timePoint)
+        name='hist_whole_model_tp_' + stepName,
+        createStepName=stepName, variables=variables,
+        timePoint=timePointName)
+
+    # name='hist_whole_model_' + stepName + '_' + timePointName,
 
 
 def create_history_output_integrated_section(
-        model, name, stepName, timePoint, sectionName, variables=ALL):
+        model, stepName, timePointName, sectionName, variables=ALL):
     """
     _summary_
     :param model: ABAQUS model object
-    :param name: Repository key of the output request
     :param stepName: A String specifying the name of the step in which the field is created.
-    :param timePoint: A String specifying the name of the time points
+    :param timePointName: A String specifying the name of the time points
     :param sectionName: A String specifying the name of the section.
     :param variables: A tuple of strings specifying the variables to be output.
     """
     model.HistoryOutputRequest(
-        name=name, createStepName=stepName, variables=variables,
-        timePoint=timePoint, integratedOutputSection=sectionName,
+        name='hist_int_sec_tp_' + stepName + '_' + sectionName,
+        createStepName=stepName, variables=variables,
+        timePoint=timePointName, integratedOutputSection=sectionName,
         sectionPoints=DEFAULT, rebar=EXCLUDE)
 
 
 def create_field_output_whole_model(
-        model, name, stepName, timePoint, variables=PRESELECT):
+        model, stepName, timePointName, variables=PRESELECT):
     model.FieldOutputRequest(
-        name=name, createStepName=stepName, variables=variables,
-        timePoint=timePoint)
+        name='field_whole_model_tp_' + stepName, createStepName=stepName,
+        variables=variables, timePoint=timePointName)
 
 
 def get_predefined_field_variables_structural_analysis():
@@ -119,6 +124,7 @@ def create_integrated_output_section(
     # Create integrated output section
     model.IntegratedOutputSection(
         name=sectionName, surface=region)
+    return sectionName
 
 
 # def create_history_output_at_RP(model, referencePoint, stepName=None, variables=()):
