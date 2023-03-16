@@ -84,3 +84,15 @@ def write_xy_Report(session, xydataName, overwrite=True):
 
     # Export Report
     session.writeXYReport(fileName=xydataName+'.rpt', xyData=(x0, ))
+
+
+def access_xy_data(session, xydata):
+    """
+    This method returns the data of an XYData object.
+    :param session: Abaqus session member
+    :param xydata: A String specifying the repository key.
+    :return: A tuple containing the data of the XYData object.
+    """
+    # Gather data
+    xy = session.xyDataObjects[xydata].data
+    return xy
