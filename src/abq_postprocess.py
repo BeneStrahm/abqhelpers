@@ -38,7 +38,7 @@ def create_path_along_point_list(session, pathName, point_list):
 
 
 def create_xy_data_from_path(
-        session, xydataName, pathName, variable, step,
+        session, xydataName, pathName, variable, step, frame,
         includeIntersections=False, projectOntoMesh=False,
         pathStyle=PATH_POINTS, shape=UNDEFORMED, labelType=TRUE_DISTANCE,
         removeDuplicateXYPairs=True, includeAllElements=False):
@@ -63,7 +63,8 @@ def create_xy_data_from_path(
         includeIntersections=includeIntersections,
         projectOntoMesh=projectOntoMesh, pathStyle=pathStyle, shape=shape,
         labelType=labelType, removeDuplicateXYPairs=removeDuplicateXYPairs,
-        includeAllElements=includeAllElements, variable=variable, step=step)
+        includeAllElements=includeAllElements, variable=variable, step=step,
+        frame=frame)
     return pathName + '_' + xydataName + '_' + str(step)
 
 

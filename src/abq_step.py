@@ -110,7 +110,8 @@ def create_suppress_axial_rotation_at_edge(model, instance, stepName="Initial"):
 
 
 def create_vertical_disp_at_RP(
-        model, referencePoint, uz=1, bcName='load_disp_', stepName="Loading"):
+        model, referencePoint, uz=1, bcName='load_disp_', stepName="Loading",
+        amplitude=UNSET):
     # Get reference point
     a = model.rootAssembly
     region = a.Set(referencePoints=(
@@ -119,25 +120,28 @@ def create_vertical_disp_at_RP(
     model.DisplacementBC(
         name=bcName + referencePoint[0].name, createStepName=stepName,
         region=region, u1=UNSET, u2=UNSET, u3=uz, ur1=UNSET, ur2=UNSET,
-        ur3=UNSET, amplitude=UNSET, distributionType=UNIFORM, fieldName='',
+        ur3=UNSET, amplitude=amplitude, distributionType=UNIFORM, fieldName='',
         localCsys=None)
 
 
 def create_prestress_temperature_at_(
-        model, instance, magnitude, stepName='Prestress'):
+        model, instance, magnitude, stepName='Prestress', bcName='prestress_',
+        amplitude=UNSET):
     # Get edges
     a = model.rootAssembly
     e = a.instances[instance].edges[:]
     region = a.Set(edges=e, name='prestress_' + instance)
+    # if amplitude is None:
     model.Temperature(
-        name='prestress_' + instance, createStepName=stepName, region=region,
-        distributionType=UNIFORM,
+        name=bcName + instance, createStepName=stepName,
+        region=region, distributionType=UNIFORM,
         crossSectionDistribution=CONSTANT_THROUGH_THICKNESS,
-        magnitudes=(magnitude,))
+        magnitudes=(magnitude,),
+        amplitude=amplitude)
 
 
 def create_prestress_temperature_at_solid(
-        model, instance, magnitude, stepName='Prestress'):
+        model, instance, magnitude, stepName='Prestress', amplitude=UNSET):
     # Get edges
     a = model.rootAssembly
     c = a.instances[instance].cells[:]
@@ -146,7 +150,7 @@ def create_prestress_temperature_at_solid(
         name='prestress_' + instance, createStepName=stepName, region=region,
         distributionType=UNIFORM,
         crossSectionDistribution=CONSTANT_THROUGH_THICKNESS,
-        magnitudes=(magnitude,))
+        magnitudes=(magnitude,), amplitude=amplitude)
 
 
 def deactivate_boundary_condition(model, bcName, stepName):

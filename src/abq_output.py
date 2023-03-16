@@ -114,7 +114,13 @@ def create_integrated_output_section(
                 faceSet.append(myFace.pointOn[0])
 
     # Create set with faces that are on the section plane by point
-    faces = f.findAt(tuple(faceSet))
+    faces = []
+    # Create a sequence of faces
+    for i in faceSet:
+        face = f.findAt(i)
+        fi = face.index
+        faces.append(f[fi:fi+1])
+    # Create the set
     sFaces = a.Surface(side1Faces=faces, name=sectionName+'-f')
 
     # Convert set with faces to region

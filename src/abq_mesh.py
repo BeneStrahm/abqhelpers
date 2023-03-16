@@ -27,24 +27,45 @@ import os
 # ------------------------------------------------------------------------------
 
 
-def seed_all_active_instances(model, size=10.0, deviationFactor=0.1, minSizeFactor=0.1):
+def seed_all_active_instances(
+        model, size=10.0, deviationFactor=0.1, minSizeFactor=0.1):
     a = model.rootAssembly
     for key in a.instances.keys():
         # choose only active instances
         if a.instances[key].ips != None:
             # seed part instance
             a.seedPartInstance(
-                regions=(a.instances[key],), size=size, deviationFactor=deviationFactor, minSizeFactor=minSizeFactor),
+                regions=(a.instances[key],),
+                size=size, deviationFactor=deviationFactor,
+                minSizeFactor=minSizeFactor),
 
-def seed_active_instance(model, instance, size=10.0, deviationFactor=0.1, minSizeFactor=0.1):
+
+def seed_active_instance(
+        model, instances, size=10.0, deviationFactor=0.1, minSizeFactor=0.1):
     a = model.rootAssembly
     # choose only active instances
-    if a.instances[instance].ips != None:
-        # seed part instance
-        a.seedPartInstance(
-            regions=(a.instances[instance],), size=size, deviationFactor=deviationFactor, minSizeFactor=minSizeFactor),
+    for instance in instances:
+        if a.instances[instance].ips != None:
+            # seed part instance
+            a.seedPartInstance(
+                regions=(a.instances[instance],),
+                size=size, deviationFactor=deviationFactor,
+                minSizeFactor=minSizeFactor),
 
-def assign_mesh_control_all_active_instances(model, elemTypes, elemShape=TET, technique=FREE, ):
+
+def seed_active_part(
+        model, parts, size=10.0, deviationFactor=0.1, minSizeFactor=0.1):
+    # choose only active instances
+    for part in parts:
+        if model.parts[part].ips != None:
+            p = model.parts[part]
+            p.seedPart(
+                size=size, deviationFactor=deviationFactor,
+                minSizeFactor=minSizeFactor)
+
+
+def assign_mesh_control_all_active_instances(
+        model, elemTypes, elemShape=TET, technique=FREE,):
     a = model.rootAssembly
     for key in a.instances.keys():
         # choose only active instances
@@ -56,6 +77,7 @@ def assign_mesh_control_all_active_instances(model, elemTypes, elemShape=TET, te
                     regions=c, elemShape=elemShape, technique=technique)
                 a.setElementType(regions=(c,), elemTypes=(elemTypes))
 
+
 def generate_mesh_all_active_instances(model,):
     a = model.rootAssembly
     for key in a.instances.keys():
@@ -64,3 +86,15 @@ def generate_mesh_all_active_instances(model,):
             # seed part instance
             a.generateMesh(
                 regions=(a.instances[key],)),
+
+
+def make_dependent_instance(model, instances):
+    a = model.rootAssembly
+    for instance in instances:
+        a.makeDependent(instances=(a.instances[instance],))
+
+
+def make_independent_instance(model, instances):
+    a = model.rootAssembly
+    for instance in instances:
+        a.makeIndependent(instances=(a.instances[instance],))
