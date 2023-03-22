@@ -68,6 +68,55 @@ def create_xy_data_from_path(
     return pathName + '_' + xydataName + '_' + str(step)
 
 
+def create_xy_data_from_field_nodal(
+        session, xydataName, variable, nodeSets):
+    """
+    This method creates an XYData object from path information.
+    :param session: Abaqus session member
+    :param xydataName: A String specifying the repository key.
+    :param variable: A tuple of tuples containing the descriptions of variables for which to extract data along the path. The default value is the current variable. Each tuple specifies the following:Variable label: A String specifying the variable; for example, ‘U’.Variable output position: A SymbolicConstant specifying the output position. Possible values are ELEMENT_CENTROID, ELEMENT_FACE, ELEMENT_NODAL, GENERAL_PARTICLE, INTEGRATION_POINT, NODAL, WHOLE_ELEMENT, WHOLE_MODEL, WHOLE_PART_INSTANCE, and WHOLE_REGION.Refinement: A tuple specifying the refinement. If the refinement tuple is omitted, data are written for all components and invariants (if applicable). This element is required if the location dictionary (the following element in the tuple) is included. The refinement tuple contains the following:Type: A SymbolicConstant specifying the type of refinement. Possible values are INVARIANT and COMPONENT.Label: A String specifying the invariant or the component; for example, ‘Mises’ or ‘S22’.Location: An optional Dictionary specifying the location. The dictionary contains pairs of the following:A String specifying the category selection label.A String specifying the section point label.For example,`variable= (‘S’,INTEGRATION_POINT, ( (COMPONENT, ‘S22’ ), ), ) variable= ((‘S’,INTEGRATION_POINT, ((COMPONENT, ‘S11’ ), ), ), (‘U’,NODAL,((COMPONENT, ‘U1’),)),) variable= ((‘S’, INTEGRATION_POINT, ((INVARIANT, ‘Mises’ ), ), {‘shell < STEEL > < 3 section points >’:’SNEG, (fraction = -1.0)’, }), )`
+    :param nodeSets: A sequence of Strings specifying node sets or a String specifying a single node set.
+    """
+    # Access odb
+    key = session.odbs.keys()[0]
+    odb = session.odbs[key]
+
+    # Create XYData
+    xydata = session.xyDataListFromField(
+        odb=odb, outputPosition=NODAL, variable=variable,
+        nodeSets=nodeSets)
+
+    xydata_name = str(xydata).split("\'")[1]
+
+    session.xyDataObjects.changeKey(
+        fromName=xydata_name, toName=nodeSets[0] + '_' + xydataName)
+
+    return nodeSets[0] + '_' + xydataName
+
+
+def create_xy_data_from_history_nodal(
+        session, xydataName, outputVariableName, steps):
+    """
+    This method creates an XYData object from path information.
+    :param session: Abaqus session member
+    :param xydataName: A String specifying the repository key.
+    :param outputVariableName: A String specifying the output variable from which the X–Y data will be read.
+    :param steps: A sequence of Strings specifying the names of the steps from which data will be extracted.
+    """
+    # Access odb
+    key = session.odbs.keys()[0]
+    odb = session.odbs[key]
+
+    print(steps)
+
+    # Create XYData
+    session.XYDataFromHistory(name=xydataName, odb=odb,
+                              outputVariableName=outputVariableName,
+                              steps=steps)
+
+    return xydataName
+
+
 def write_xy_Report(session, xydataName, overwrite=True):
     """
     This method writes an XYData object to a report file.
