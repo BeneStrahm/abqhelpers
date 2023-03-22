@@ -37,11 +37,9 @@ def create_time_points(
 def create_history_output_whole_model(
         model, stepName, timePointName, variables=PRESELECT):
     model.HistoryOutputRequest(
-        name='hist_whole_model_tp_' + stepName,
+        name='h_whl_mdl_tp_' + timePointName + '_' + stepName[0:3],
         createStepName=stepName, variables=variables,
         timePoint=timePointName)
-
-    # name='hist_whole_model_' + stepName + '_' + timePointName,
 
 
 def create_history_output_integrated_section(
@@ -55,21 +53,23 @@ def create_history_output_integrated_section(
     :param variables: A tuple of strings specifying the variables to be output.
     """
     model.HistoryOutputRequest(
-        name='hist_int_sec_tp_' + stepName + '_' + sectionName,
-        createStepName=stepName, variables=variables,
+        name='h_int_sec_tp_' + timePointName + '_' + stepName[0:3] + '_' +
+        sectionName, createStepName=stepName, variables=variables,
         timePoint=timePointName, integratedOutputSection=sectionName,
         sectionPoints=DEFAULT, rebar=EXCLUDE)
 
 
 def create_field_output_whole_model(
-        model, stepName, timePointName, variables=PRESELECT):
+        model, stepName, timePointName, variables=PRESELECT,
+        position=CENTROIDAL):
     model.FieldOutputRequest(
-        name='field_whole_model_tp_' + stepName, createStepName=stepName,
-        variables=variables, timePoint=timePointName)
+        name='f_whl_mdl_tp_' + timePointName + '_' + stepName[0:3],
+        createStepName=stepName, variables=variables, timePoint=timePointName,
+        position=position)
 
 
 def get_predefined_field_variables_structural_analysis():
-    return (('S', 'MISES', 'E', 'PE', 'PEEQ', 'PEMAG', 'EE', 'THE', 'U', 'RF', 'CF', 'SF', 'TF', 'CSTRESS', 'CDISP'))
+    return (('S', 'MISES', 'E', 'EE', 'PE', 'PEEQ', 'PEMAG', 'EE', 'THE', 'U', 'RF', 'CF', 'TF'))
 
 
 def get_predefined_field_variables_thermal_analysis():

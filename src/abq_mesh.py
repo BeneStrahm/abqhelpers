@@ -98,3 +98,38 @@ def make_independent_instance(model, instances):
     a = model.rootAssembly
     for instance in instances:
         a.makeIndependent(instances=(a.instances[instance],))
+
+
+def seed_edges_all_instances_in_bounding_box(
+        model, xMin, yMin, zMin, xMax, yMax, zMax, size=10.0,
+        deviationFactor=0.1, minSizeFactor=0.1):
+    """
+    This method creates a set of objects that lie within the specified bounding box.
+    :param model: ABAQUS model object
+    :param xMin: A float specifying the minimum *X*-boundary of the bounding box.
+    :param yMin: A float specifying the minimum *Y*-boundary of the bounding box.
+    :param zMin: A float specifying the minimum *Z*-boundary of the bounding box.
+    :param xMax: A float specifying the maximum *X*-boundary of the bounding box.
+    :param yMax: A float specifying the maximum *Y*-boundary of the bounding box.
+    :param zMax: A float specifying the maximum *Z*-boundary of the bounding box.
+    :param size: A Float specifying the desired global element size for the edges.
+    :param deviationFactor: A Float specifying the deviation factor h/L, where is h the chordal deviation and L is the element length.
+    :param minSizeFactor: A Float specifying the size of the smallest allowable element as a fraction of the specified global element size.
+    """
+    # get all instances
+    a = model.rootAssembly
+
+    # Empty lists for the different entity types
+    e1 = []
+
+    # Select entities across all entities by bounding box
+    for key in a.instances.keys():
+
+        # choose only active instances
+        if a.instances[key].ips != None:
+            e = a.instances[key].edges[:]
+            e1 = e.getByBoundingBox(
+                xMin, yMin, zMin, xMax, yMax, zMax)
+            a.seedEdgeBySize(
+                edges=e1, size=size, deviationFactor=deviationFactor,
+                minSizeFactor=minSizeFactor, constraint=FINER)
