@@ -131,4 +131,20 @@ dmypy.json
 *.3dmbak
 
 # Abaqus
+*.SMABulk
 *.rpy
+*.rpy*
+*.com
+*.ipm
+*.jnl 
+*.log 
+*.mdl 
+*.odb 
+*.odb_f 
+*.prt 
+*.rec 
+*.sim 
+*.simlog
+*.stt 
+*.023 
+*.7 
