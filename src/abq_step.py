@@ -187,4 +187,18 @@ def get_etk_EN_13501_2(t=14400, dt=600):
     etk = 345 * np.log10(8 * t + 1) + 20
     etk_norm = etk / etk.max()
     etk_max = etk.max()
-    return (t, etk_norm, etk_max)
+    return (t*60, etk_norm, etk_max)
+
+
+def define_restart(
+        model, stepName, numberIntervals=10, overlay=ON):
+    """
+    Requesting restart files
+    :param model: ABAQUS model object
+    :param stepName: A String specifying the name of the step.
+    :param numberIntervals: An Int specifying the number of intervals per step, defaults to 10
+    :param overlay: Specify whether the restart files are to be written over the existing files, defaults to ON
+    """
+    model.steps[stepName].Restart(
+        frequency=0, numberIntervals=numberIntervals, overlay=overlay,
+        timeMarks=OFF)
