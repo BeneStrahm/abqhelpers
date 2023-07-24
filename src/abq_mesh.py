@@ -17,6 +17,7 @@
 from abaqus import *
 from abaqusConstants import *
 import os
+import regionToolset
 
 # ------------------------------------------------------------------------------
 # Classes
@@ -78,6 +79,26 @@ def assign_mesh_control_all_active_instances(
                 a.setElementType(regions=(c,), elemTypes=(elemTypes))
 
 
+def assign_mesh_control_instances(
+        model, instances, elemTypes, elemShape=TET, technique=FREE,):
+    a = model.rootAssembly
+
+    if type(instances) == str:
+        c = a.instances[instances].cells[:]
+        r = regionToolset.Region(cells=c)
+        a.setMeshControls(
+            regions=c, elemShape=elemShape, technique=technique)
+        a.setElementType(regions=(c,), elemTypes=(elemTypes))
+
+    elif type(instances) == list:
+        for instance in instances:
+            c = a.instances[instance].cells[:]
+            r = regionToolset.Region(cells=c)
+            a.setMeshControls(
+                regions=c, elemShape=elemShape, technique=technique)
+            a.setElementType(regions=(c,), elemTypes=(elemTypes))
+
+
 def generate_mesh_all_active_instances(model,):
     a = model.rootAssembly
     for key in a.instances.keys():
@@ -133,3 +154,25 @@ def seed_edges_all_instances_in_bounding_box(
             a.seedEdgeBySize(
                 edges=e1, size=size, deviationFactor=deviationFactor,
                 minSizeFactor=minSizeFactor, constraint=FINER)
+
+
+def set_element_type(model, instances, elemTypes):
+    """
+    _summary_
+    :param model: ABAQUS model object
+    :param instance: A String specifying the repository key of the instance.
+    :param elemTypes: A sequence of ElemType objects, one for each element shape applicable to the regions.
+    """
+    a = model.rootAssembly
+    # TODO: Generally change instance type uniformly to list to avoid that if the instance consists of just one element it is of type string
+
+    if type(instances) == str:
+        c = a.instances[instances].cells[:]
+        r = regionToolset.Region(cells=c)
+        a.setElementType(regions=r, elemTypes=elemTypes)
+
+    elif type(instances) == list:
+        for instance in instances:
+            c = a.instances[instance].cells[:]
+            r = regionToolset.Region(cells=c)
+            a.setElementType(regions=r, elemTypes=elemTypes)
