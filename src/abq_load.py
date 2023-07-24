@@ -47,7 +47,7 @@ def create_predefined_field_all_instances(
             region = a.Set(vertices=v, edges=e, faces=f, cells=c,
                            name='predefined_field_' + fieldName)
             model.Temperature(
-                name=fieldName, stepName=stepName, region=region,
+                name=fieldName, createStepName=stepName, region=region,
                 distributionType=UNIFORM,
                 crossSectionDistribution=CONSTANT_THROUGH_THICKNESS,
                 magnitudes=(magnitude,))

@@ -107,8 +107,6 @@ def create_xy_data_from_history_nodal(
     key = session.odbs.keys()[0]
     odb = session.odbs[key]
 
-    print(steps)
-
     # Create XYData
     session.XYDataFromHistory(name=xydataName, odb=odb,
                               outputVariableName=outputVariableName,
