@@ -1,0 +1,1 @@
+del *.dmp *.rpy *.com *.ipm *.jnl *.log *.mdl *.odb *.odb_f *.prt *.rec *.sim *.stt *.023 *.7 
