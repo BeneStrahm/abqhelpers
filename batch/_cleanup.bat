@@ -1,1 +1,1 @@
-del *.dmp *.rpy *.com *.ipm *.jnl *.log *.mdl *.odb *.odb_f *.prt *.rec *.sim *.stt *.023 *.7 
+del *.dmp *.com *.ipm *.jnl *.log *.mdl *.odb_f *.prt *.rec *.res *.sim *.stt *.023 *.7 *.SMABulk
