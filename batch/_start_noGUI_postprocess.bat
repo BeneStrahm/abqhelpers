@@ -1,0 +1,1 @@
+abaqus cae noGUI=postprocessor.py > postprocessor.log
