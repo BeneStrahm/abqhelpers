@@ -124,6 +124,21 @@ def create_vertical_disp_at_RP(
         localCsys=None)
 
 
+def create_horizontal_disp_at_RP(
+        model, referencePoint, ux=1, bcName='load_disp_', stepName="Loading",
+        amplitude=UNSET):
+    # Get reference point
+    a = model.rootAssembly
+    region = a.Set(referencePoints=(
+        referencePoint[1],), name="load_disp_" + referencePoint[0].name,)
+    # Assign boundary condition
+    model.DisplacementBC(
+        name=bcName + referencePoint[0].name, createStepName=stepName,
+        region=region, u1=ux, u2=UNSET, u3=UNSET, ur1=UNSET, ur2=UNSET,
+        ur3=UNSET, amplitude=amplitude, distributionType=UNIFORM, fieldName='',
+        localCsys=None)
+
+
 def create_prestress_temperature_at_(
         model, instance, magnitude, stepName='Prestress', bcName='prestress_',
         amplitude=UNSET):

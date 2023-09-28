@@ -69,7 +69,7 @@ def create_field_output_whole_model(
 
 
 def get_predefined_field_variables_structural_analysis():
-    return (('S', 'MISES', 'E', 'EE', 'PE', 'PEEQ', 'PEMAG', 'EE', 'THE', 'U', 'RF', 'CF', 'TF'))
+    return (('S', 'MISES', 'E', 'EE', 'PE', 'PEEQ', 'PEEQT', 'PEMAG', 'EE', 'THE', 'U', 'RF', 'CF', 'TF'))
 
 
 def get_predefined_field_variables_thermal_analysis():
