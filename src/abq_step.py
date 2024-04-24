@@ -217,3 +217,5 @@ def define_restart(
     model.steps[stepName].Restart(
         frequency=0, numberIntervals=numberIntervals, overlay=overlay,
         timeMarks=OFF)
+
+t, etk_norm, etk_max = get_etk_EN_13501_2(t=60*90, dt=300)
