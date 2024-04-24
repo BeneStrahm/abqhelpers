@@ -1,0 +1,1 @@
+abaqus cae script=postprocessor.py
