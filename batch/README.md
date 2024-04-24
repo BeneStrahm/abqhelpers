@@ -15,3 +15,9 @@ Copies the whole folder where the script is located to the specified path in a n
 
 ## start - copyToHPC - cleanup
 Executes start_noGUI, cleanup and then copyToHPC
+
+## start_postprocess
+Executes Abaqus with the script postprocessor.py. Open GUI to visualize the files. Can be used locally to postprocess results.
+
+## start_noGUI_postprocess
+Executes Abaqus with the script postprocessor.py. No GUI mode to accelerate the process. Can be used locally or on HPC-Clusters to postprocess results.
