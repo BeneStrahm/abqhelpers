@@ -202,6 +202,75 @@ def create_distributing_coupling(
         u1=u1, u2=u2, u3=u3, ur1=ur1, ur2=ur2, ur3=ur3)
 
 
+def create_contact_property_tangential_normal(model, name, friction):
+    """
+    Create a contact property with a tangential and normal behavior.
+    The normal behavior is set to HARD and the tangential behavior is set to PENALTY.
+    :param model: ABAQUS model object
+    :param name: A String specifying the repository key.
+    :param friction: A Float specifying the friction value.
+    """
+    model.ContactProperty(name)
+    model.interactionProperties[name].TangentialBehavior(
+        formulation=PENALTY, directionality=ISOTROPIC, slipRateDependency=OFF, pressureDependency=OFF,
+        temperatureDependency=OFF, dependencies=0, table=((friction, ), ), shearStressLimit=None,
+        maximumElasticSlip=FRACTION, fraction=0.005, elasticSlipStiffness=None)
+    model.interactionProperties[name].NormalBehavior(
+        pressureOverclosure=HARD, allowSeparation=ON,
+        constraintEnforcementMethod=DEFAULT)
+
+
+def create_surface_to_surface_contact(
+        model, contactPoint, masterInstance, slaveInstance, contactProperty, sliding=SMALL, stepName='Initial'):
+
+    a = model.rootAssembly
+    # Careful: Contact point is not supplied in the same way as reference points
+    # eg in function create_coupling. It is supplied one level higher in the
+    # hierarchy:
+    # TODO: Change this to be consistent with create_coupling
+    # -> create_surface_to_surface_contact (contactPoint)
+    # -> create_coupling (referencePoint[0])
+
+    # If type is tuple use coordinates
+    if isinstance(contactPoint[0], tuple):
+        coordinates = (contactPoint[0],)
+        name = contactPoint[1]
+
+    # If referencePoint (FEATURE), first extract coordinates
+    else:
+        # if isinstance(contactPoint[0][0], 'Feature'):
+        coordinates = ((contactPoint[0][0].xValue,
+                        contactPoint[0][0].yValue,
+                        contactPoint[0][0].zValue),)
+        name = contactPoint[0][0].name
+    try:
+        # Get corresponding face (closest face within tolerance)
+        f = a.instances[masterInstance].faces
+        myFace = f.getClosest(coordinates=coordinates, searchTolerance=1)
+        face = (f[myFace[0][0].index:myFace[0][0].index+1], )
+        master = a.Surface(side1Faces=face, name="m_contact_" + name)
+    except KeyError:
+        raise KeyError('Check if contact face ' + name +
+                       ' exits at assembly ' + masterInstance)
+
+    # Get slave surface (closest face within tolerance)
+    try:
+        f = a.instances[slaveInstance].faces
+        myFace = f.getClosest(coordinates=coordinates, searchTolerance=1)
+        face = (f[myFace[0][0].index:myFace[0][0].index+1], )
+        slave = a.Surface(side1Faces=face, name="s_contact_" + name)
+    except KeyError:
+        raise KeyError('Check if contact face ' + name +
+                       ' exits at assembly ' + slaveInstance)
+
+    # Create contact
+    model.SurfaceToSurfaceContactStd(
+        name="contact_" + name, createStepName=stepName,
+        master=master, slave=slave, sliding=sliding, thickness=ON,
+        interactionProperty=contactProperty, adjustMethod=NONE,
+        initialClearance=OMIT, datumAxis=None, clearanceRegion=None)
+
+
 def create_film_condition(
         model, name, stepName, sFaces, filmCoeff, sinkTemperature,
         sinkAmplitude=''):
@@ -212,7 +281,7 @@ def create_film_condition(
     :param stepName: A String specifying the name of the step in which the interaction is created.
     :param sFaces: Set containing the faces where the film condition is applied
     :param filmCoeff:  A Float specifying the reference film coefficient value.
-    :param sinkTemperature: A Float specifying the reference sink temperature. 
+    :param sinkTemperature: A Float specifying the reference sink temperature.
     :param sinkAmplitude: A String specifying the name of the Amplitude object that gives the variation of the sink temperature with time.
     """
     # Convert set with faces to region
