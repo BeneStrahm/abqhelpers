@@ -366,7 +366,7 @@ p132
 stp133
 (I23
 I4
-S'concrete_cdp_AT'
+S'concrete_cdp_SIKA553'
 p134
 I1
 (dp135
@@ -379,7 +379,7 @@ p138
 g137
 sS'Time Stamp'
 p139
-F1730483553.102
+F1730665779.803
 sS'visible'
 p140
 (lp141
@@ -399,73 +399,73 @@ sg142
 g137
 sS'Data'
 p146
-S"{'name': 'concrete_cdp_AT', 'elastic': {'temperatureDependency': OFF, 'moduli': LONG_TERM, 'noCompression': OFF, 'noTension': OFF, 'dependencies': 0, 'table': ((23500.0, 0.2),), 'type': ISOTROPIC}, 'density': {'temperatureDependency': OFF, 'table': ((2.3e-09,),), 'dependencies': 0, 'fieldName': '', 'distributionType': UNIFORM}, 'concreteDamagedPlasticity': {'temperatureDependency': OFF, 'table': ((36.0, 0.1, 1.16, 0.667, 5e-06),), 'dependencies': 0, 'concreteCompressionHardening': {'temperatureDependency': OFF, 'table': ((18.88, 0.0), (21.19, 4e-05), (25.67, 7e-05), (29.78, 0.00011), (33.52, 0.00017), (36.85, 0.00023), (39.77, 0.0003), (42.25, 0.00039), (44.25, 0.00049), (45.77, 0.0006), (46.76, 0.00073), (47.21, 0.00087), (47.07, 0.00103), (46.32, 0.0012), (44.91, 0.0014), (42.8, 0.00161), (39.95, 0.00184), (36.32, 0.00209), (35.03, 0.00218), (28.85, 0.00266), (24.84, 0.00309), (22.04, 0.00348), (19.97, 0.00385), (18.39, 0.00421), (17.13, 0.00456), (16.1, 0.0049), (15.23, 0.00524), (14.49, 0.00558), (13.84, 0.00591), (13.27, 0.00624), (12.75, 0.00657), (12.28, 0.0069), (11.84, 0.00722), (11.44, 0.00755), (11.06, 0.00788), (10.7, 0.0082), (10.36, 0.00853), (10.03, 0.00885), (9.72, 0.00917), (9.42, 0.0095), (9.12, 0.00982), (8.84, 0.01014), (8.56, 0.01047), (8.29, 0.01079), (8.02, 0.01111), (7.76, 0.01143), (7.5, 0.01176), (7.25, 0.01208), (7.0, 0.0124), (6.75, 0.01272), (6.51, 0.01304), (6.27, 0.01337), (6.03, 0.01369), (5.79, 0.01401), (5.55, 0.01433), (5.32, 0.01465), (5.08, 0.01498), (4.85, 0.0153)), 'rate': OFF, 'dependencies': 0}, 'concreteTensionStiffening': {'temperatureDependency': OFF, 'table': ((4.0706, 0.0), (0.6106, 0.0192), (0.0, 0.1415)), 'rate': OFF, 'dependencies': 0, 'type': DISPLACEMENT}}, 'materialIdentifier': '', 'description': ''}"
+S"{'name': 'concrete_cdp_SIKA553', 'elastic': {'temperatureDependency': OFF, 'moduli': LONG_TERM, 'noCompression': OFF, 'noTension': OFF, 'dependencies': 0, 'table': ((19600.0, 0.2),), 'type': ISOTROPIC}, 'density': {'temperatureDependency': OFF, 'table': ((2.3e-09,),), 'dependencies': 0, 'fieldName': '', 'distributionType': UNIFORM}, 'concreteDamagedPlasticity': {'temperatureDependency': OFF, 'concreteCompressionDamage': {'temperatureDependency': OFF, 'table': ((0.0, 0.0), (0.8, 0.00158), (0.95, 0.01088)), 'dependencies': 0, 'tensionRecovery': 0.0}, 'concreteCompressionHardening': {'temperatureDependency': OFF, 'table': ((41.4, 0.0), (49.36, 1e-05), (53.16, 3e-05), (56.77, 4e-05), (60.1, 7e-05), (63.07, 0.00011), (65.56, 0.00016), (67.47, 0.00023), (68.68, 0.00032), (69.1, 0.00044), (68.76, 0.00055), (56.58, 0.00158), (41.98, 0.00268), (31.53, 0.00365), (24.55, 0.00452), (19.81, 0.00531), (16.46, 0.00606), (14.0, 0.00679), (12.14, 0.00749), (10.69, 0.00819), (9.53, 0.00887), (8.59, 0.00954), (7.81, 0.01022), (7.15, 0.01088)), 'rate': OFF, 'dependencies': 0}, 'concreteTensionStiffening': {'temperatureDependency': OFF, 'table': ((2.8494, 0.0), (0.5699, 0.02604), (0.0, 0.13018)), 'rate': OFF, 'dependencies': 0, 'type': DISPLACEMENT}, 'dependencies': 0, 'concreteTensionDamage': {'temperatureDependency': OFF, 'table': ((0.0, 0.0), (0.8, 0.02604), (0.95, 0.13018)), 'dependencies': 0, 'compressionRecovery': 1.0, 'type': DISPLACEMENT}, 'table': ((36.0, 0.1, 1.16, 0.667, 5e-06),)}, 'materialIdentifier': '', 'description': ''}"
 p147
 stp148
 (I22
 I4
-S'concrete_cdp_SIKA553'
+S'concrete_cdp_AT'
 p149
 I1
 (dp150
-S'Data Source'
-p151
-S'Imported from CAE'
-p152
-sS'Description'
-p153
-g152
-sS'Time Stamp'
-p154
-F1730484736.657
-sS'visible'
-p155
-(lp156
-g151
-ag153
-aS'Units'
-p157
-aS'Vendor material name'
-p158
-asS'version'
-p159
-S'2021'
-p160
-sg158
-g149
-sg157
-g152
-sS'Data'
-p161
-S"{'name': 'concrete_cdp_SIKA553', 'elastic': {'temperatureDependency': OFF, 'moduli': LONG_TERM, 'noCompression': OFF, 'noTension': OFF, 'dependencies': 0, 'table': ((19600.0, 0.2),), 'type': ISOTROPIC}, 'density': {'temperatureDependency': OFF, 'table': ((2.3e-09,),), 'dependencies': 0, 'fieldName': '', 'distributionType': UNIFORM}, 'concreteDamagedPlasticity': {'temperatureDependency': OFF, 'table': ((36.0, 0.1, 1.16, 0.667, 5e-06),), 'dependencies': 0, 'concreteCompressionHardening': {'temperatureDependency': OFF, 'table': ((27.64, 0.0), (29.06, 0.0), (33.2, 0.0), (37.31, 0.0), (41.4, 0.0), (45.42, 1e-05), (49.36, 1e-05), (53.16, 3e-05), (56.77, 4e-05), (60.1, 7e-05), (63.07, 0.00011), (65.56, 0.00016), (67.47, 0.00023), (68.68, 0.00032), (69.1, 0.00044), (68.76, 0.00055), (56.58, 0.00158), (41.98, 0.00268), (31.53, 0.00365), (24.55, 0.00452), (19.81, 0.00531), (16.46, 0.00606), (14.0, 0.00679), (12.14, 0.00749), (10.69, 0.00819), (9.53, 0.00887), (8.59, 0.00954), (7.81, 0.01022), (7.15, 0.01088)), 'rate': OFF, 'dependencies': 0}, 'concreteTensionStiffening': {'temperatureDependency': OFF, 'table': ((3.8936, 0.0), (0.584, 0.0236), (0.0, 0.1738)), 'rate': OFF, 'dependencies': 0, 'type': DISPLACEMENT}}, 'materialIdentifier': '', 'description': ''}"
-p162
-stp163
-(I21
-I7
-S'steel_s355'
-p164
-I1
-(dp165
 g136
 g137
 sg138
 g137
 sg139
-F1730483574.527
+F1730665779.624
 sg140
-(lp166
+(lp151
 g136
 ag138
 ag142
 ag143
 asg144
 S'2021'
-p167
+p152
 sg143
-g164
+g149
 sg142
 g137
 sg146
+S"{'name': 'concrete_cdp_AT', 'elastic': {'temperatureDependency': OFF, 'moduli': LONG_TERM, 'noCompression': OFF, 'noTension': OFF, 'dependencies': 0, 'table': ((23500.0, 0.2),), 'type': ISOTROPIC}, 'density': {'temperatureDependency': OFF, 'table': ((2.3e-09,),), 'dependencies': 0, 'fieldName': '', 'distributionType': UNIFORM}, 'concreteDamagedPlasticity': {'temperatureDependency': OFF, 'concreteCompressionDamage': {'temperatureDependency': OFF, 'table': ((0.0, 0.0), (0.8, 0.00209), (0.95, 0.0153)), 'dependencies': 0, 'tensionRecovery': 0.0}, 'concreteCompressionHardening': {'temperatureDependency': OFF, 'table': ((18.88, 0.0), (21.19, 4e-05), (25.67, 7e-05), (29.78, 0.00011), (33.52, 0.00017), (36.85, 0.00023), (39.77, 0.0003), (42.25, 0.00039), (44.25, 0.00049), (45.77, 0.0006), (46.76, 0.00073), (47.21, 0.00087), (47.07, 0.00103), (46.32, 0.0012), (44.91, 0.0014), (42.8, 0.00161), (39.95, 0.00184), (36.32, 0.00209), (35.03, 0.00218), (28.85, 0.00266), (24.84, 0.00309), (22.04, 0.00348), (19.97, 0.00385), (18.39, 0.00421), (17.13, 0.00456), (16.1, 0.0049), (15.23, 0.00524), (14.49, 0.00558), (13.84, 0.00591), (13.27, 0.00624), (12.75, 0.00657), (12.28, 0.0069), (11.84, 0.00722), (11.44, 0.00755), (11.06, 0.00788), (10.7, 0.0082), (10.36, 0.00853), (10.03, 0.00885), (9.72, 0.00917), (9.42, 0.0095), (9.12, 0.00982), (8.84, 0.01014), (8.56, 0.01047), (8.29, 0.01079), (8.02, 0.01111), (7.76, 0.01143), (7.5, 0.01176), (7.25, 0.01208), (7.0, 0.0124), (6.75, 0.01272), (6.51, 0.01304), (6.27, 0.01337), (6.03, 0.01369), (5.79, 0.01401), (5.55, 0.01433), (5.32, 0.01465), (5.08, 0.01498), (4.85, 0.0153)), 'rate': OFF, 'dependencies': 0}, 'concreteTensionStiffening': {'temperatureDependency': OFF, 'table': ((2.8494, 0.0), (0.5699, 0.02604), (0.0, 0.13018)), 'rate': OFF, 'dependencies': 0, 'type': DISPLACEMENT}, 'dependencies': 0, 'concreteTensionDamage': {'temperatureDependency': OFF, 'table': ((0.0, 0.0), (0.8, 0.02604), (0.95, 0.13018)), 'dependencies': 0, 'compressionRecovery': 1.0, 'type': DISPLACEMENT}, 'table': ((36.0, 0.1, 1.16, 0.667, 5e-06),)}, 'materialIdentifier': '', 'description': ''}"
+p153
+stp154
+(I21
+I7
+S'steel_s355'
+p155
+I1
+(dp156
+S'Data Source'
+p157
+S'Imported from CAE'
+p158
+sS'Description'
+p159
+g158
+sS'Time Stamp'
+p160
+F1730483574.527
+sS'visible'
+p161
+(lp162
+g157
+ag159
+aS'Units'
+p163
+aS'Vendor material name'
+p164
+asS'version'
+p165
+S'2021'
+p166
+sg164
+g155
+sg163
+g158
+sS'Data'
+p167
 S"{'name': 'steel_s355', 'elastic': {'temperatureDependency': OFF, 'moduli': LONG_TERM, 'noCompression': OFF, 'noTension': OFF, 'dependencies': 0, 'table': ((210000.0, 0.3),), 'type': ISOTROPIC}, 'density': {'temperatureDependency': OFF, 'table': ((7.85e-09,),), 'dependencies': 0, 'fieldName': '', 'distributionType': UNIFORM}, 'expansion': {'temperatureDependency': OFF, 'userSubroutine': OFF, 'zero': 0.0, 'dependencies': 0, 'table': ((1.2e-05,),), 'type': ISOTROPIC}, 'plastic': {'temperatureDependency': OFF, 'scaleStress': None, 'rate': OFF, 'dependencies': 0, 'hardening': ISOTROPIC, 'staticRecovery': OFF, 'dataType': HALF_CYCLE, 'table': ((355.0, 0.0), (490.0, 0.0203)), 'strainRangeDependency': OFF, 'numBackstresses': 1}, 'materialIdentifier': '', 'description': 'Source: DIN EN 1993-1 Tabelle 3.1'}"
 p168
 stp169
@@ -475,26 +475,26 @@ S'steel_1-7225'
 p170
 I1
 (dp171
-g136
-g137
-sg138
-g137
-sg139
+g157
+g158
+sg159
+g158
+sg160
 F1730483573.017
-sg140
+sg161
 (lp172
-g136
-ag138
-ag142
-ag143
-asg144
+g157
+ag159
+ag163
+ag164
+asg165
 S'2021'
 p173
-sg143
+sg164
 g170
-sg142
-g137
-sg146
+sg163
+g158
+sg167
 S"{'name': 'steel_1-7225', 'elastic': {'temperatureDependency': OFF, 'moduli': LONG_TERM, 'noCompression': OFF, 'noTension': OFF, 'dependencies': 0, 'table': ((210000.0, 0.3),), 'type': ISOTROPIC}, 'density': {'temperatureDependency': OFF, 'table': ((7.85e-09,),), 'dependencies': 0, 'fieldName': '', 'distributionType': UNIFORM}, 'expansion': {'temperatureDependency': OFF, 'userSubroutine': OFF, 'zero': 0.0, 'dependencies': 0, 'table': ((1.2e-05,),), 'type': ISOTROPIC}, 'plastic': {'temperatureDependency': OFF, 'scaleStress': None, 'rate': OFF, 'dependencies': 0, 'hardening': ISOTROPIC, 'staticRecovery': OFF, 'dataType': HALF_CYCLE, 'table': ((900.0, 0.0), (1100.0, 0.0057)), 'strainRangeDependency': OFF, 'numBackstresses': 1}, 'materialIdentifier': '', 'description': 'Source: DIN EN 1993-1 Tabelle 3.1'}"
 p174
 stp175

@@ -221,8 +221,7 @@ def create_contact_property_tangential_normal(model, name, friction):
 
 
 def create_surface_to_surface_contact(
-        model, contactPoint, masterInstance, slaveInstance, contactProperty, sliding=SMALL, stepName='Initial'):
-
+        model, contactPoint, masterInstance, slaveInstance, contactProperty, sliding=FINITE, stepName='Initial'):
     a = model.rootAssembly
     # Careful: Contact point is not supplied in the same way as reference points
     # eg in function create_coupling. It is supplied one level higher in the
