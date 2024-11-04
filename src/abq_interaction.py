@@ -202,21 +202,26 @@ def create_distributing_coupling(
         u1=u1, u2=u2, u3=u3, ur1=ur1, ur2=ur2, ur3=ur3)
 
 
-def create_contact_property_tangential_normal(model, name, friction):
+def create_contact_property_tangential_normal(model, name, friction, formulation='penalty', separation=ON):
     """
     Create a contact property with a tangential and normal behavior.
     The normal behavior is set to HARD and the tangential behavior is set to PENALTY.
     :param model: ABAQUS model object
     :param name: A String specifying the repository key.
     :param friction: A Float specifying the friction value.
+    :param formulation: A String specifying the formulation of the tangential behavior.
+    :param separation: A Boolean specifying if separation after contact is allowed.
     """
     model.ContactProperty(name)
-    model.interactionProperties[name].TangentialBehavior(
-        formulation=PENALTY, directionality=ISOTROPIC, slipRateDependency=OFF, pressureDependency=OFF,
-        temperatureDependency=OFF, dependencies=0, table=((friction, ), ), shearStressLimit=None,
-        maximumElasticSlip=FRACTION, fraction=0.005, elasticSlipStiffness=None)
+    if formulation == 'rough':
+        model.interactionProperties[name].TangentialBehavior(formulation=ROUGH)
+    else:
+        model.interactionProperties[name].TangentialBehavior(
+            formulation=PENALTY, directionality=ISOTROPIC, slipRateDependency=OFF, pressureDependency=OFF,
+            temperatureDependency=OFF, dependencies=0, table=((friction, ), ), shearStressLimit=None,
+            maximumElasticSlip=FRACTION, fraction=0.005, elasticSlipStiffness=None)
     model.interactionProperties[name].NormalBehavior(
-        pressureOverclosure=HARD, allowSeparation=ON,
+        pressureOverclosure=HARD, allowSeparation=separation,
         constraintEnforcementMethod=DEFAULT)
 
 
@@ -264,7 +269,7 @@ def create_surface_to_surface_contact(
 
     # Create contact
     model.SurfaceToSurfaceContactStd(
-        name="contact_" + name, createStepName=stepName,
+        name="cs_" + masterInstance + '_' + slaveInstance + '_' + name, createStepName=stepName,
         master=master, slave=slave, sliding=sliding, thickness=ON,
         interactionProperty=contactProperty, adjustMethod=NONE,
         initialClearance=OMIT, datumAxis=None, clearanceRegion=None)
